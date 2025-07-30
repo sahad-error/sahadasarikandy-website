@@ -172,6 +172,47 @@ img {
   top: 2rem;
   background-color: var(--first-color);
 }
+/* ===== DROPDOWN MENU ===== */
+.sahad__dropdown {
+  position: relative;
+}
+
+.dropdown__menu {
+  display: none;
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  z-index: var(--z-fixed);
+}
+
+.dropdown__menu li {
+  padding: 0;
+}
+
+.dropdown__link {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: var(--second-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.dropdown__link:hover {
+  background-color: #f5f5f5;
+  color: var(--first-color);
+}
+
+/* Show dropdown on hover (desktop only) */
+@media screen and (min-width: 768px) {
+  .sahad__dropdown:hover .dropdown__menu {
+    display: block;
+  }
+}
 
 /*=== Show menu ===*/
 .show {
