@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahad Asarikandy Resume</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- html2pdf.js CDN for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* Custom styles to ensure Inter font is applied and for specific overrides if needed */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Hide scrollbar for a cleaner look, but allow content to scroll */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Style for the PDF button container to position it */
+        .pdf-button-container {
+            position: fixed; /* Fixed position relative to the viewport */
+            bottom: 20px;    /* 20px from the bottom */
+            right: 20px;     /* 20px from the right */
+            z-index: 1000;   /* Ensure it stays on top of other content */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 leading-relaxed p-4 sm:p-8 md:p-12">
+    <div class="container mx-auto max-w-4xl bg-white shadow-lg rounded-xl overflow-hidden">
+        <!-- Header Section -->
+        <header class="text-center bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 sm:p-8 rounded-t-xl">
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 tracking-tight">SAHAD ASARIKANDY</h1>
+            <p class="text-lg sm:text-xl font-light opacity-90">IT Support & Systems Administrator</p>
+            <p class="text-sm sm:text-base mt-3 opacity-80">
+                +973-38206810 | sahadak2001@yahoo.com | 1701, 2735, 327, Adliya, Manama | 
+                <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339" target="_blank" class="text-white hover:underline">sahad-asarikandy-713382339</a>
+            </p>
+        </header>
+
+        <!-- Summary Section -->
+        <section class="p-6 sm:p-8 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">SUMMARY</h2>
+            <p class="text-gray-700 text-base">
+                Tech-savvy IT Support and Systems Administrator with hands-on experience in cloud infrastructure management (AWS), end-user support, and network troubleshooting. Proficient in Python, Linux, SQL, and virtualization technologies. Skilled at diagnosing and resolving technical issues, configuring systems, and ensuring smooth business operations. A strong communicator, quick learner, and holder of a valid Bahrain driver’s license. Ready to take on challenging roles in cloud operations, IT support, or network administration.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="p-6 sm:p-8 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">SKILLS</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-gray-700 list-disc pl-5">
+                <li>Python, PowerShell, and Bash scripting</li>
+                <li>HTML, CSS, and JavaScript</li>
+                <li>Windows and Linux Server administration</li>
+                <li>Microsoft 365 setup and management</li>
+                <li>AWS cloud infrastructure</li>
+                <li>Hyper-V virtualization</li>
+                <li>TCP/IP networking fundamentals</li>
+                <li>Firewall setup and configuration</li>
+                <li>Troubleshooting and resolving hardware and software issues</li>
+                <li>Customer support and technical assistance</li>
+                <li>Time management and task prioritization</li>
+            </ul>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="p-6 sm:p-8 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">EXPERIENCE</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-medium text-gray-900">IT Support & Sales Associate, Al Salam Travels, Bahrain</h3>
+                <p class="text-gray-600 text-sm mb-2">Jul 2023 — Current</p>
+                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Delivered Tier 1 technical support for desktops, printers, and network connectivity issues.</li>
+                    <li>Installed, configured, and maintained operating systems and essential software across user machines.</li>
+                    <li>Installed and maintained CCTV systems, ensuring reliable video surveillance and remote access for security monitoring.</li>
+                    <li>Managed user accounts and group policies in Active Directory for access control and security.</li>
+                    <li>Assisted with backup and recovery operations for critical business applications and files.</li>
+                    <li>Supported travel software and coordinated with vendors for system updates and bug fixes.</li>
+                    <li>Achieved monthly sales goals through effective client communication and upselling of travel packages.</li>
+                    <li>Provided technical training and support to staff on using IT systems, travel software, and security tools to improve daily operations.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-medium text-gray-900">IT Administrator, Cognitive-Solution, Mangaluru, India</h3>
+                <p class="text-gray-600 text-sm mb-2">Aug 2020 — Apr 2022</p>
+                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Supported and maintained on-premise and cloud-based infrastructure, including AWS EC2 instances, S3 storage, and IAM roles.</li>
+                    <li>Deployed and managed Windows Server environments, including Active Directory, Group Policy Objects (GPOs), and user account provisioning.</li>
+                    <li>Provided daily help desk support for end-users across hardware, OS, software, email, and printer issues.</li>
+                    <li>Monitored and configured network devices, including switches, routers, and firewalls, ensuring secure and stable connectivity.</li>
+                    <li>Assisted in server patching, updates, and routine system maintenance tasks to ensure system reliability.</li>
+                    <li>Supported the setup of virtual machines and development environments using VirtualBox and AWS.</li>
+                    <li>Documented infrastructure changes, troubleshooting procedures, and user guides to improve IT service delivery.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="p-6 sm:p-8 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">EDUCATION</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-medium text-gray-900">Bachelor of Computer Application</h3>
+                <p class="text-gray-600 text-sm">Yenepoya University, Mangaluru, India</p>
+                <p class="text-gray-600 text-sm mb-2">2019 — 2022</p>
+                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Specialization: Big Data Analytics & Cloud Computing</li>
+                    <li>Achieved a GPA of 3.2/4.0, reflecting consistent academic excellence.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-medium text-gray-900">High School Degree, Computer Science</h3>
+                <p class="text-gray-600 text-sm">GHS School, Kerala, India</p>
+                <p class="text-gray-600 text-sm mb-2">2016 — 2019</p>
+                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Specialization: Programming Languages</li>
+                    <li>Graduated with Honors, achieving a GPA of 3.5/4.0</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="p-6 sm:p-8 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">PROJECTS</h2>
+            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                <li><strong>VoIP Server:</strong> Deployed Asterisk-based VoIP on AWS using SIP trunks for internal calls.</li>
+                <li><strong>VPN Server:</strong> Configured OpenVPN on AWS for secure remote access.</li>
+                <li><strong>Stock Trend Prediction App:</strong> Built ML model with Keras and Streamlit for trend analysis on Colab.</li>
+                <li><strong>Network Monitoring System:</strong> Set up real-time monitoring with Prometheus and Grafana, including custom alerts.</li>
+                <li><strong>Website Uptime Monitor:</strong> Set up a monitoring tool using Python and cron to check website availability and send email alerts on downtime.</li>
+            </ul>
+        </section>
+
+        <!-- Languages Section -->
+        <section class="p-6 sm:p-8 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">LANGUAGES</h2>
+            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                <li>English</li>
+                <li>Hindi</li>
+                <li>Malayalam</li>
+                <li>Tamil</li>
+            </ul>
+        </section>
+
+        <!-- Awards Section -->
+        <section class="p-6 sm:p-8 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">AWARDS</h2>
+            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                <li>Big Data Analytics & Cloud Computing</li>
+                <li>Cross Platform Mobile App Development</li>
+                <li>Microsoft Technical Associate: JavaScript Programming</li>
+                <li>Handset Repair Engineering</li>
+            </ul>
+        </section>
+
+        <!-- References Section -->
+        <section class="p-6 sm:p-8 pb-8">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">REFERENCES</h2>
+            <p class="text-gray-700">Reference available upon request</p>
+        </section>
+    </div>
+</body>
+</html>
