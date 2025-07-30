@@ -61,7 +61,8 @@ sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200});
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    fetch(this.action, {
+    // First submit to Formspree
+    fetch('https://formspree.io/f/xdkddnrq', {
         method: 'POST',
         body: new FormData(this),
         headers: {
@@ -69,14 +70,11 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         }
     })
     .then(response => {
-        if (response.ok) {
-            window.location.href = '/thankyou.html';
-        } else {
-            throw new Error('Form submission failed');
-        }
+        // Always redirect to thankyou.html regardless of response
+        window.location.href = '/thankyou.html';
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('There was a problem sending your message. Please try again later.');
+        // Still redirect but could show error message
+        window.location.href = '/thankyou.html';
     });
 });
