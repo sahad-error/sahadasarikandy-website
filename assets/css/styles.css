@@ -214,6 +214,7 @@ img {
   width: 360px;
 }
 
+
 /*BUTTONS*/
 .button {
   display: inline-block;
@@ -426,6 +427,164 @@ img {
   cursor: pointer;
   margin-left: auto;
 }
+
+/* ===== RESUME =====*/
+/* Custom styles for the resume section and its embedded content */
+
+/* Global body styles for the resume content (if loaded directly or within iframe) */
+body {
+    font-family: 'Inter', sans-serif; /* Ensures Inter font is applied */
+    -ms-overflow-style: none;  /* IE and Edge - Hide scrollbar */
+    scrollbar-width: none;  /* Firefox - Hide scrollbar */
+}
+/* Hide scrollbar for a cleaner look */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Styles for the main resume container (the white box) */
+.container {
+    max-width: 800px; /* Max width for the resume content */
+    margin-left: auto; /* Center the container */
+    margin-right: auto; /* Center the container */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Shadow effect */
+    border-radius: 0.75rem; /* Rounded corners */
+    overflow: hidden; /* Ensures content respects rounded corners */
+}
+
+/* Styles for the header section within the resume */
+.container header {
+    text-align: center;
+    background-image: linear-gradient(to right, #2563eb, #1e40af); /* Blue gradient background */
+    color: #ffffff; /* White text color */
+    padding: 1.5rem 2rem; /* Padding */
+    border-top-left-radius: 0.75rem; /* Rounded top corners */
+    border-top-right-radius: 0.75rem; /* Rounded top corners */
+}
+.container header h1 {
+    font-size: 3rem; /* Large font size for name */
+    font-weight: 800; /* Extra bold */
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em; /* Tighten letter spacing */
+}
+.container header p {
+    font-size: 1.125rem; /* Font size for title */
+    font-weight: 300; /* Light font weight */
+    opacity: 0.9;
+    margin-top: 0.75rem;
+}
+.container header p a {
+    color: #ffffff; /* White link color */
+    text-decoration: none;
+}
+.container header p a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Styles for general sections within the resume */
+.container section {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e5e7eb; /* Light gray border at bottom */
+}
+.container section:last-of-type {
+    border-bottom: none; /* No border for the last section */
+}
+
+/* Styles for section titles within the resume */
+.container section h2 {
+    font-size: 1.5rem; /* Font size for section titles */
+    font-weight: 600; /* Semi-bold */
+    color: #1d4ed8; /* Blue color */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #93c5fd; /* Blue border at bottom */
+}
+
+/* Styles for list items (skills, experience, education, projects, awards, languages) */
+.container ul {
+    list-style: disc; /* Bullet points */
+    padding-left: 1.25rem; /* Indent list items */
+}
+.container ul li {
+    margin-bottom: 0.25rem; /* Small margin between list items */
+    color: #4b5563; /* Dark gray text */
+}
+.container ul.grid { /* Specific for skills grid layout */
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Single column by default */
+    gap: 0.5rem 2rem; /* Gap between grid items */
+}
+@media (min-width: 768px) { /* Medium screens and up */
+    .container ul.grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns */
+    }
+}
+
+/* Styles for subheadings (experience, education titles) */
+.container h3 {
+    font-size: 1.25rem; /* Font size for subheadings */
+    font-weight: 500; /* Medium font weight */
+    color: #1f2937; /* Darker gray text */
+    margin-bottom: 0.5rem;
+}
+.container p.text-gray-600 { /* Styles for dates/locations */
+    font-size: 0.875rem; /* Smaller font size */
+    color: #4b5563; /* Gray text */
+    margin-bottom: 0.5rem;
+}
+
+/* Styles for the main portfolio's resume section (the parent container) */
+.resume {
+    position: relative; /* Crucial for positioning the button absolutely within this section */
+    padding-bottom: 80px; /* Add padding to make space for the button at the bottom */
+}
+
+/* Style for the PDF button container to position it within the resume section */
+.pdf-button-container {
+    position: absolute; /* Position relative to the .resume section */
+    bottom: 20px;    /* 20px from the bottom of the .resume section */
+    left: 50%;       /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for true centering */
+    z-index: 1000;   /* Ensure it stays on top of other content */
+}
+
+/* Styles for the PDF download button */
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background: linear-gradient(90deg, #007BFF, #0056D2);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 86, 210, 0.4);
+}
+
+.download-button i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+
+/* Styles for the iframe containing the resume content */
+.resume-iframe {
+    width: 100%;
+    border: none; /* No border for the iframe */
+    overflow: hidden; /* Hide iframe's internal scrollbar */
+    /* Height will be set dynamically by JavaScript */
+}
+
 
 /* ===== FOOTER =====*/
 .footer {
