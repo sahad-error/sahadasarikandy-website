@@ -220,17 +220,16 @@ I focus on building responsive, accessible, and SEO-friendly websites that load 
 </section>
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
-
-                <div class="contact__container bd-grid">
-                    <form action="https://formsubmit.co/info@sahadasarikandy.com" method="POST" class="contact__form">
-    <input type="text" name="name" placeholder="Name" class="contact__input" required>
-    <input type="email" name="email" placeholder="Email" class="contact__input" required>
-    <textarea name="message" rows="10" class="contact__input" required></textarea>
-    <input type="submit" value="Send" class="contact__button button">
-</form>
-                </div>
-            </section>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact__container bd-grid">
+        <form id="contactForm" class="contact__form">
+            <input type="text" name="name" placeholder="Name" class="contact__input" required>
+            <input type="email" name="email" placeholder="Email" class="contact__input" required>
+            <textarea name="message" cols="0" rows="10" class="contact__input" required></textarea>
+            <button type="submit" class="contact__button button">Enviar</button>
+        </form>
+    </div>
+</section>
         </main>
 
         <!--===== FOOTER =====-->
