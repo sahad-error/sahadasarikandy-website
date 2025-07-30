@@ -26,6 +26,7 @@
                         <li class="sahad__item"><a href="#skills" class="sahad__link">Skills</a></li>
                         <li class="sahad__item"><a href="#work" class="sahad__link">Work</a></li>
                         <li class="sahad__item"><a href="#contact" class="sahad__link">Contact</a></li>
+                        <li class="sahad__item"><a href="#resume" class="sahad__link">Resume</a></li>
                     </ul>
                 </div>
 
@@ -93,6 +94,7 @@ I focus on building responsive, accessible, and SEO-friendly websites that load 
                     </div>                                   
                 </div>
             </section>
+        
 
          <section class="skills section" id="skills">
   <h2 class="section-title">Skills</h2>
@@ -222,29 +224,53 @@ I focus on building responsive, accessible, and SEO-friendly websites that load 
             <section class="contact section" id="contact">
     <h2 class="section-title">Contact</h2>
     <div class="contact__container bd-grid">
+<<<<<<< HEAD
+        <form id="contactForm" class="contact__form">
+            <input type="text" name="name" placeholder="Name" class="contact__input" required>
+            <input type="email" name="email" placeholder="Email" class="contact__input" required>
+            <textarea name="message" cols="0" rows="10" class="contact__input" required></textarea>
+            <button type="submit" class="contact__button button">SUBMIT</button>
+        </form>
+=======
 <form action="https://formspree.io/f/xdkddnrq" method="POST" id="contactForm" class="contact__form">
     <!-- Your existing fields -->
     <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
     <!-- Make sure to replace yourdomain.com with your actual domain -->
 </form>
+>>>>>>> 62f1f48533ddea34bdf13fbbe191bf6c83ce9134
     </div>
 </section>
 
         </main>
+                <!--===== RESUME =====-->
+ <section class="resume section" id="resume">
+  <h2 class="section-title">Resume</h2>
+  <div class="resume__container bd-grid">
+    <div class="resume__content">
+      <iframe id="resumeIframe" src="resume1.html" class="resume-iframe" onload="resizeIframe(this)"></iframe>
+    </div>
+    <div class="pdf-button-container mt-6 text-center">
+      <a href="Sahad_Asarikandy_Resume.pdf" download="Sahad_Asarikandy_Resume.pdf" class="download-button">
+        <i class='bx bx-download'></i> Download Resume (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+       <!--===== FOOTER =====-->
+<footer class="footer">
+    <p class="footer__title">SAHAD ASARIKANDY</p>
+    <div class="footer__social">
+        <a href="https://wa.me/97338206810" class="footer__icon" target="_blank" rel="noopener noreferrer"><i class='bx bxl-whatsapp'></i></a>
+        <a href="https://www.facebook.com/sahad.ak.980/" class="footer__icon" target="_blank" rel="noopener noreferrer"><i class='bx bxl-facebook'></i></a>
+        <a href="mailto:info@sahadasariandy.com" class="footer__icon" target="_blank" rel="noopener noreferrer"><i class='bx bx-envelope'></i></a>
+        <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339/" class="footer__icon" target="_blank" rel="noopener noreferrer"><i class='bx bxl-linkedin'></i></a>
+        <a href="https://github.com/sahad-error" class="footer__icon" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>    
+        <a href="https://twitter.com/Sahadak6" class="footer__icon" target="_blank" rel="noopener noreferrer"><i class='bx bxl-twitter'></i></a>
+    </div>
+    <p class="footer__copy">&#169; sahadasarikandy. All rights reserved</p>
+</footer>
 
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Marlon</p>
-            <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
-            </div>
-            <p class="footer__copy">&#169; Bedimcode. All rigths reserved</p>
-        </footer>
-
-
-        <!--===== SCROLL REVEAL =====-->
+       <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
 
         <!--===== MAIN JS =====-->
