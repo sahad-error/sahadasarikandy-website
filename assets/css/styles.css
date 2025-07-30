@@ -173,6 +173,7 @@ img {
   background-color: var(--first-color);
 }
 /* ===== DROPDOWN MENU ===== */
+/* === Dropdown Menu Styling === */
 .sahad__dropdown {
   position: relative;
 }
@@ -187,6 +188,19 @@ img {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border-radius: 0.5rem;
   z-index: var(--z-fixed);
+}
+dropdown__menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.sahad__dropdown:hover .dropdown__menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .dropdown__menu li {
@@ -207,16 +221,11 @@ img {
   color: var(--first-color);
 }
 
-/* Show dropdown on hover (desktop only) */
+/* === Show dropdown on hover for desktop === */
 @media screen and (min-width: 768px) {
   .sahad__dropdown:hover .dropdown__menu {
     display: block;
   }
-}
-
-/*=== Show menu ===*/
-.show {
-  right: 0;
 }
 
 /*===== HOME =====*/
