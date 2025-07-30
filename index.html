@@ -222,14 +222,20 @@ I focus on building responsive, accessible, and SEO-friendly websites that load 
             <section class="contact section" id="contact">
     <h2 class="section-title">Contact</h2>
     <div class="contact__container bd-grid">
-        <form id="contactForm" class="contact__form">
+        <form id="contactForm" class="contact__form" action="https://formspree.io/f/xdkddnrq" method="POST">
             <input type="text" name="name" placeholder="Name" class="contact__input" required>
             <input type="email" name="email" placeholder="Email" class="contact__input" required>
-            <textarea name="message" cols="0" rows="10" class="contact__input" required></textarea>
-            <button type="submit" class="contact__button button">Enviar</button>
+            <textarea name="message" rows="10" placeholder="Message" class="contact__input" required></textarea>
+            
+            <!-- Optional: customize behavior -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://sahadasarikandy.com/#contact">
+
+            <button type="submit" class="contact__button button">Send</button>
         </form>
     </div>
 </section>
+
         </main>
 
         <!--===== FOOTER =====-->
