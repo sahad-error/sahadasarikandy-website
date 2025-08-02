@@ -38,72 +38,79 @@
             </nav>
         </header>
             <!--===== HOME =====-->
-        <!--===== HOME =====-->
-<main class="l-main">
+        <main class="l-main">
     <section class="home bd-grid" id="home">
-        <div class="home__content">
-            <div class="home__data">
-                <h1 class="home__title">
-                    <span class="home__greeting">Hi there,</span><br>
-                    I'm <span class="home__title-color">SAHAD</span><br>
-                    <span class="home__subtitle">Web Designer & Developer</span>
-                </h1>
-                <p class="home__description">
-                    Crafting beautiful, responsive websites with modern technologies and user-focused design.   
-                </p>
-               <br>
-                <div class="home__buttons">
-                    <a href="#contact" class="button button--main">
-                        <span>Contact Me</span>
-                        <i class='bx bx-paper-plane'></i>
-                    </a>
-                    <a href="#work" class="button button--secondary">
-                        <span>My Work</span>
-                        <i class='bx bx-briefcase-alt'></i>
-                    </a>
+        <div class="home__container">
+            <!-- Animated background elements -->
+            <div class="home__bg-elements">
+                <div class="home__circle home__circle--1"></div>
+                <div class="home__circle home__circle--2"></div>
+                <div class="home__circle home__circle--3"></div>
+                <div class="home__square home__square--1"></div>
+                <div class="home__square home__square--2"></div>
+            </div>
+            
+            <div class="home__content">
+                <div class="home__data">
+                    <div class="home__badge">
+                        <span>Welcome to my portfolio</span>
+                    </div>
+                    
+                    <h1 class="home__title">
+                        <span class="home__title-line">Hello, I'm</span>
+                        <span class="home__title-highlight">SAHAD</span>
+                        <span class="home__title-line">Web Designer & Developer</span>
+                    </h1>
+                    
+                    <p class="home__description">
+                        I create <span class="text-gradient">digital experiences</span> that are beautiful, functional, and user-focused. 
+                        Combining modern design with clean code to bring ideas to life.
+                    </p>
+                    
+                    <div class="home__buttons">
+                        <a href="#contact" class="button button--primary">
+                            <span>Get In Touch</span>
+                            <i class='bx bx-paper-plane'></i>
+                        </a>
+                        <a href="#work" class="button button--secondary">
+                            <span>View Projects</span>
+                            <i class='bx bx-code-alt'></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home__image">
+                    <div class="home__image-container">
+                        <img src="assets/img/profile.png" alt="Sahad's profile" class="home__profile-img">
+                        <div class="home__image-frame"></div>
+                        <div class="home__image-dots"></div>
+                    </div>
                 </div>
             </div>
-
+            
             <div class="home__social">
-                <div class="social__icons">
-                    <a href="https://wa.me/97338206810" class="home__social-icon" target="_blank" rel="noopener noreferrer" title="WhatsApp">
-                        <i class='bx bxl-whatsapp'></i>
-                    </a>
-                    <a href="mailto:info@sahadasariandy.com" class="home__social-icon" target="_blank" rel="noopener noreferrer" title="Email">
-                        <i class='bx bx-envelope'></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339/" class="home__social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                        <i class='bx bxl-linkedin'></i>
-                    </a>
-                    <a href="https://github.com/sahad-error" class="home__social-icon" target="_blank" rel="noopener noreferrer" title="GitHub">
-                        <i class='bx bxl-github'></i>
-                    </a>
-                    <a href="https://www.facebook.com/sahad.ak.980/" class="home__social-icon" target="_blank" rel="noopener noreferrer" title="Facebook">
-                        <i class='bx bxl-facebook'></i>
-                    </a>
-                    <a href="https://instagram.com/sahad_ak___/?hl=en" class="home__social-icon" target="_blank" rel="noopener noreferrer" title="Instagram">
-                        <i class='bx bxl-instagram'></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="home__img">
-            <div class="home__blob-container">
-                <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg">
-                    <mask id="mask0" mask-type="alpha">
-                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                    </mask>
-                    <g mask="url(#mask0)">
-                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        <image class="home__blob-img" x="50" y="60" href="assets/img/profile.png"/>
-                    </g>
-                </svg>
-                <div class="home__blob-shadow"></div>
-                <div class="home__blob-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="social__bar">
+                    <span class="social__label">Follow me</span>
+                    <div class="social__icons">
+                        <a href="https://wa.me/97338206810" class="social__icon" target="_blank" title="WhatsApp">
+                            <i class='bx bxl-whatsapp'></i>
+                        </a>
+                        <a href="mailto:info@sahadasariandy.com" class="social__icon" target="_blank" title="Email">
+                            <i class='bx bx-envelope'></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339/" class="social__icon" target="_blank" title="LinkedIn">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="https://github.com/sahad-error" class="social__icon" target="_blank" title="GitHub">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                        <a href="https://www.facebook.com/sahad.ak.980/" class="social__icon" target="_blank" title="Facebook">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a href="https://instagram.com/sahad_ak___/?hl=en" class="social__icon" target="_blank" title="Instagram">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
