@@ -455,11 +455,9 @@ body {
 }
 
 .home__social {
-    position: fixed;
-    left: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
+    margin-top: 3rem;
+    width: 100%;
+    order: 2; /* 
 }
 
 .social__icons {
