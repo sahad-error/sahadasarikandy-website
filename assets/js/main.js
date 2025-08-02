@@ -1,172 +1,299 @@
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, sahadId) =>{
-    const toggle = document.getElementById(toggleId),
-    sahad = document.getElementById(sahadId)
+/*===== MENU TOGGLE =====*/
+const showMenu = (toggleId, menuId) => {
+    const toggle = document.getElementById(toggleId);
+    const menu = document.getElementById(menuId);
 
-    if(toggle && sahad){
-        toggle.addEventListener('click', ()=>{
-            sahad.classList.toggle('show')
-        })
+    if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+            toggle.setAttribute('aria-expanded', menu.classList.contains('show'));
+        });
     }
-}
-showMenu('sahad-toggle','sahad-menu')
+};
+showMenu('sahad-toggle', 'sahad-menu');
 
-/*==================== REMOVE MENU MOBILE ====================*/
-const sahadLink = document.querySelectorAll('.sahad__link')
+/*===== CLOSE MOBILE MENU ON LINK CLICK =====*/
+const navLinks = document.querySelectorAll('.sahad__link');
 
-function linkAction(){
-    const sahadMenu = document.getElementById('sahad-menu')
-    // When we click on each sahad__link, we remove the show-menu class
-    sahadMenu.classList.remove('show')
-}
-sahadLink.forEach(n => n.addEventListener('click', linkAction))
+const closeMenu = () => {
+    const menu = document.getElementById('sahad-menu');
+    menu.classList.remove('show');
+    document.getElementById('sahad-toggle').setAttribute('aria-expanded', 'false');
+};
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
+navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
 
-const scrollActive = () =>{
-    const scrollDown = window.scrollY
+/*===== ACTIVE LINK ON SCROLL =====*/
+const setActiveLink = () => {
+    const scrollPosition = window.scrollY + 100;
+    
+    document.querySelectorAll('section[id]').forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.sahad__menu a[href*="${sectionId}"]`);
 
-  sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight,
-              sectionTop = current.offsetTop - 58,
-              sectionId = current.getAttribute('id'),
-              sectionsClass = document.querySelector('.sahad__menu a[href*=' + sectionId + ']')
-        
-        if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
-            sectionsClass.classList.add('active-link')
-        }else{
-            sectionsClass.classList.remove('active-link')
-        }                                                    
-    })
-}
-window.addEventListener('scroll', scrollActive)
+        if (navLink) { // Ensure the navLink exists before trying to modify its class
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLink.classList.add('active-link');
+            } else {
+                navLink.classList.remove('active-link');
+            }
+        }
+    });
+};
 
-/*===== SCROLL REVEAL ANIMATION =====*/
+window.addEventListener('scroll', setActiveLink);
+
+/*===== SCROLL REVEAL ANIMATIONS =====*/
 const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
-    duration: 2000,
+    duration: 1000,
     delay: 200,
-//     reset: true
+    reset: false,
+    mobile: false
 });
 
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+// Configure animations
+sr.reveal('.home__data, .about__img', { origin: 'left' });
+sr.reveal('.home__img, .about__text', { origin: 'right', delay: 400 });
+sr.reveal('.home__social-icon', { interval: 200, origin: 'bottom' });
+sr.reveal('.skills__data, .work__item, .contact__card', { interval: 150 });
+
+/*===== DARK MODE TOGGLE =====*/
+const themeToggle = document.getElementById('theme-toggle');
+const getCurrentTheme = () => localStorage.getItem('theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'bx bx-sun' : 'bx bx-moon';
+};
+
+// Initialize theme
+setTheme(getCurrentTheme());
+
+// Toggle theme on click
+themeToggle.addEventListener('click', () => {
+    const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
 
 /*===== CONTACT FORM HANDLING =====*/
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    
-    // Using Formspree.io for form submission (free service)
-    fetch('https://formspree.io/f/xdkddnrq', {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<span>Sending...</span><i class="bx bx-loader bx-spin"></i>';
+        
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch('https://formspree.io/f/xdkddnrq', {
+                method: 'POST',
+                body: formData,
+                // Do NOT set Content-Type header when sending FormData,
+                // the browser will set it correctly (multipart/form-data)
+                headers: { 
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                submitButton.innerHTML = '<span>Sent!</span><i class="bx bx-check"></i>';
+                contactForm.reset();
+                // Redirect to thank you page after 1.5 seconds
+                setTimeout(() => {
+                    window.location.href = 'thankyou.html';
+                }, 1500);
+            } else {
+                const errorData = await response.json();
+                console.error('Formspree error response:', errorData); // Log Formspree's error response
+                throw new Error(errorData.error || 'Form submission failed');
+            }
+        } catch (error) {
+            console.error('Error during form submission:', error); // Log the caught error
+            submitButton.innerHTML = '<span>Error! Try Again</span><i class="bx bx-error"></i>';
+            setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }, 3000);
         }
-    })
-    .then(response => {
-        if (response.ok) {
-            // Redirect to thank you page
-            window.location.href = 'thankyou.html';
+    });
+}
+
+/*===== RESUME IFRAME HANDLING =====*/
+const resizeIframe = (iframe) => {
+    try {
+        const resizeObserver = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                // Ensure there's a valid scrollHeight before setting height
+                if (iframe.contentWindow && iframe.contentWindow.document.body.scrollHeight) {
+                    iframe.style.height = `${iframe.contentWindow.document.body.scrollHeight + 20}px`;
+                }
+            }
+        });
+        
+        // Observe the body of the iframe's content
+        if (iframe.contentWindow && iframe.contentWindow.document.body) {
+            resizeObserver.observe(iframe.contentWindow.document.body);
         } else {
-            throw new Error('Network response was not ok');
+            console.warn('Iframe contentWindow or document.body not available for ResizeObserver.');
+            iframe.style.height = '1200px'; // Fallback height
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('There was a problem sending your message. Please try again.');
+    } catch (e) {
+        console.warn('Iframe resize error (likely cross-origin):', e);
+        iframe.style.height = '1200px'; // Fallback height
+    }
+};
+
+// Initialize iframe when loaded
+const resumeIframe = document.getElementById('resumeIframe');
+if (resumeIframe) {
+    resumeIframe.addEventListener('load', () => resizeIframe(resumeIframe));
+}
+
+/*===== PDF DOWNLOAD HANDLER =====*/
+const downloadPdf = async (e) => {
+    // Only proceed if the clicked element or its ancestor has the 'download-button' class
+    const downloadBtn = e.target.closest('.download-button');
+    if (!downloadBtn || downloadBtn.id !== 'downloadPdfBtn') return; // Added ID check to be specific
+
+    e.preventDefault(); // Prevent default link behavior for programmatic download
+
+    const originalText = downloadBtn.innerHTML;
+    downloadBtn.disabled = true;
+    downloadBtn.innerHTML = '<i class="bx bx-loader bx-spin"></i> Preparing PDF...';
+    
+    try {
+        // Try direct download first (assuming 'Sahad_Asarikandy_Resume.pdf' is in the root or assets folder)
+        const pdfFileName = 'Sahad_Asarikandy_Resume.pdf'; // Or specify full path if not in root
+        const pdfResponse = await fetch(pdfFileName);
+        
+        if (pdfResponse.ok) {
+            const pdfBlob = await pdfResponse.blob();
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            
+            const a = document.createElement('a');
+            a.href = pdfUrl;
+            a.download = pdfFileName; // Set the download filename
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            setTimeout(() => URL.revokeObjectURL(pdfUrl), 100); // Clean up the URL object
+            
+            downloadBtn.innerHTML = '<i class="bx bx-check"></i> Downloaded!'; // Success message
+        } else {
+            console.warn(`Direct PDF download failed: ${pdfResponse.status} ${pdfResponse.statusText}`);
+            throw new Error('PDF file not found or accessible directly.');
+        }
+    } catch (error) {
+        console.error('Error during PDF download:', error);
+        alert('Failed to download PDF. Please ensure the file exists and is accessible, or try again later.');
+        // Fallback or error state
+        downloadBtn.innerHTML = '<i class="bx bx-error"></i> Download Failed';
+    } finally {
+        setTimeout(() => { // Revert button after a short delay
+            downloadBtn.disabled = false;
+            downloadBtn.innerHTML = originalText;
+        }, 2000);
+    }
+};
+
+// Ensure the download button has an ID for specific targeting if multiple buttons exist
+// Add an ID to your download button in index.html: <a href="Sahad_Asarikandy_Resume.pdf" id="downloadPdfBtn" download="Sahad_Asarikandy_Resume.pdf" class="download-button">
+document.getElementById('downloadPdfBtn')?.addEventListener('click', downloadPdf); // Use optional chaining for safety
+
+/*===== PERFORMANCE OPTIMIZATIONS =====*/
+// Debounce scroll events
+const debounce = (func, wait = 100) => {
+    let timeout;
+    return function() {
+        const context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+};
+// Animate skill bars on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const animateSkillBars = () => {
+    const skillBars = document.querySelectorAll('.skills__progress');
+    
+    skillBars.forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      bar.style.width = width + '%';
+    });
+  };
+
+  // Intersection Observer for scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateSkillBars();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const skillsSection = document.querySelector('.skills');
+  if (skillsSection) {
+    observer.observe(skillsSection);
+  }
+});
+// Update copyright year automatically
+document.addEventListener('DOMContentLoaded', function() {
+    // Set copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Add animation to footer icons on page load
+    const footerIcons = document.querySelectorAll('.footer__icon');
+    footerIcons.forEach((icon, index) => {
+        icon.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1 + 0.5}s`;
     });
 });
-
-// main.js
-
-// Function to dynamically resize the iframe based on its content
-function resizeIframe(iframe) {
-    try {
-        // Access the document inside the iframe
-        const iframeDoc = iframe.contentWindow.document;
-        
-        // Use setTimeout to allow all content (including images) to render
-        // before calculating height. Adjust delay if needed.
-        setTimeout(() => {
-            // Get the scrollHeight of the body content within the iframe
-            // Add a small buffer (e.g., 20px) to prevent scrollbars from appearing due to rendering differences
-            iframe.style.height = (iframeDoc.body.scrollHeight + 20) + 'px';
-        }, 100); // 100ms delay
-        
-    } catch (e) {
-        // This catch block handles potential "DOMException: Blocked a frame from accessing a cross-origin frame."
-        // if resume1.html is not served from the same origin.
-        console.warn("Could not resize iframe due to cross-origin restrictions or content not loaded:", e);
-        // Fallback: set a default height or keep a fixed height if dynamic sizing isn't possible
-        iframe.style.height = '1200px'; // A reasonable default height
+// Add this to your CSS or in a style tag
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+`;
+document.head.appendChild(style);
 
+window.addEventListener('scroll', debounce(setActiveLink));
 
-// Event listener for the PDF download button
-document.getElementById('downloadPdfBtn').addEventListener('click', function() {
-    // Get the iframe element
-    const resumeIframe = document.getElementById('resumeIframe');
-
-    // Check if the iframe content is loaded and accessible (same-origin policy applies)
-    if (resumeIframe && resumeIframe.contentWindow) {
-        // Select the main resume content container within the iframe's document
-        // Assuming the resume content in resume1.html is within a div with class 'container'
-        const element = resumeIframe.contentWindow.document.querySelector('.container'); 
-        
-        if (element) {
-            // Configuration options for html2pdf library
-            const opt = {
-                margin:       0.5, // Set margins for the PDF document (in inches)
-                filename:     'Sahad_Asarikandy_Resume.pdf', // Define the filename for the downloaded PDF
-                image:        { type: 'jpeg', quality: 0.98 }, // Image quality settings for the PDF
-                html2canvas:  { scale: 2, logging: true, dpi: 192, letterRendering: true }, // html2canvas specific options
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' } // jsPDF specific options (unit, format, orientation)
-            };
-
-            // Generate the PDF from the selected HTML element and save it to the user's device
-            html2pdf().set(opt).from(element).save();
-        } else {
-            console.error("Could not find the '.container' element inside the iframe for PDF generation.");
-            // You might want to show a user-friendly message here instead of just console.error
-        }
-    } else {
-        console.error("Iframe content not accessible or iframe not found.");
-        // You might want to show a user-friendly message here
-    }
-});
-
-// ========== RESUME IFRAME AUTO-RESIZE ==========
-function resizeIframe(iframe) {
-    try {
-        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-    } catch (e) {
-        console.warn('Iframe resize blocked due to CORS or same-origin policy.');
-    }
-}
-
-// ========== RESUME PDF DOWNLOAD HANDLER ==========
-document.addEventListener('DOMContentLoaded', () => {
-    const downloadBtn = document.getElementById('downloadPdfBtn');
-
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            // Option 1: Direct link to static PDF
-            window.open('resume.pdf', '_blank');
-
-            // Option 2: If you want to use html2pdf for a local embedded resume:
-            // const resumeContent = document.querySelector('.resume__content');
-            // html2pdf().from(resumeContent).save('Sahad_Asarikandy_Resume.pdf');
-        });
-    }
+// Load non-critical resources after page load
+window.addEventListener('load', () => {
+    // Lazy load iframe if needed - it's already set with src="resume1.html" in HTML,
+    // so this part might be redundant unless you plan to dynamically set src.
+    // If resume1.html content is very large, consider a more robust lazy loading strategy.
+    
+    // Ensure html2pdf is loaded only when needed (e.g., if direct PDF download fails)
+    // The previous implementation attempts direct download first, which is good.
+    // html2pdf is only needed as a fallback or for dynamic PDF generation.
+    // It's generally better to load it only when the user explicitly triggers a complex PDF generation.
+    // For a simple static PDF download, direct anchor link is sufficient and more performant.
+    // Keeping the current structure, but noting that html2pdf might not be strictly necessary
+    // unless 'resume.pdf' is generated on the fly from 'resume1.html'.
+    // If 'Sahad_Asarikandy_Resume.pdf' is a static file, you don't need html2pdf.
 });
