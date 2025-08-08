@@ -1,0 +1,5264 @@
+SAHADASARIKANDY-WEBSITE/
+├── assets/
+│   ├── css/
+│   │   └── styles.css
+│   ├── img/
+│   │   ├── about.jpg
+│   │   ├── profile.png
+│   │   ├── work1.jpg
+│   │   ├── work2.jpg
+│   │   ├── work3.jpg
+│   │   ├── work4.jpg
+│   │   ├── work5.jpg
+│   │   └── work6.jpg
+│   ├── js/
+│   │   └── main.js
+│   ├── php/
+│   │   ├── auth.php
+│   │   ├── create_user.php
+│   │   ├── db.php
+│   │   ├── login.php
+│   │   ├── logout.php
+│   │   └── register.php
+│   └── scss/
+│       └── styles.scss
+├── allcods
+├── CNAME
+├── index.html
+├── login.html
+├── personal.html
+├── register.html
+├── resume1.html
+├── Sahad_Asarikandy_Resume.pdf
+├── thankyou.html
+
+
+
+styles.css
+----------
+// Contents of assets/css/styles.css
+
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+  --font-semi: 600;
+  /*===== Colores =====*/
+  --hue-color: 224;
+  --first-color: hsl(var(--hue-color), 89%, 60%);
+  --second-color: hsl(var(--hue-color), 56%, 12%);
+  /*===== Fuente y tipografia =====*/
+  --body-font: "Poppins", sans-serif;
+  --big-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+  --smaller-font-size: 0.75rem;
+  /*===== Margenes =====*/
+  --mb-2: 1rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+  /*===== z index =====*/
+  --z-back: -10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3.5rem;
+    --h2-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: 0.875rem;
+  }
+}
+
+/*===== BASE =====*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  color: var(--second-color);
+  line-height: 1.6; /* Improved readability */
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*===== CLASS CSS ===== */
+.section-title {
+  position: relative;
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  margin-top: var(--mb-2);
+  margin-bottom: var(--mb-4);
+  text-align: center;
+}
+
+.section-title::after {
+  position: absolute;
+  content: "";
+  width: 64px;
+  height: 0.18rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/*===== LAYOUT =====*/
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+  grid-gap: 1.5rem;
+}
+
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
+}
+
+/*===== NAV =====*/
+.sahad {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi);
+}
+
+@media screen and (max-width: 767px) {
+  .sahad__menu {
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    padding: 2rem;
+    background-color: var(--second-color);
+    transition: 0.5s;
+    z-index: var(--z-fixed);
+    overflow-y: auto;
+  }
+
+  .sahad__menu.show {
+    right: 0;
+  }
+}
+
+.sahad__item {
+  margin-bottom: var(--mb-4);
+}
+
+.sahad__link {
+  position: relative;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  display: block;
+}
+
+.sahad__link:hover {
+  position: relative;
+}
+
+.sahad__link:hover::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0.18rem;
+  left: 0;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+.sahad__logo {
+  color: var(--second-color);
+  font-size: 1.2rem;
+  font-weight: var(--font-semi);
+}
+
+.sahad__toggle {
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+/*===== DARK MODE VARIABLES =====*/
+:root {
+  /* Your existing variables... */
+  
+  /* Light mode colors */
+    --bg-color: #fff;
+  --text-color: var(--second-color);
+  --nav-bg: #fff;
+  --card-bg: #f9f9f9;
+  --shadow-color: rgba(146, 161, 176, 0.15);
+  --section-bg: #fff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --nav-bg: #1e1e1e;
+  --card-bg: #2d2d2d;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --section-bg: #1e1e1e;
+  --second-color: #e0e0e0;
+  --first-color: hsl(var(--hue-color), 89%, 70%);
+}
+
+/* Theme toggle styles */
+.theme-toggle {
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Dark mode specific styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.l-header {
+  background-color: var(--nav-bg);
+}
+
+.sahad__logo {
+  color: var(--text-color);
+}
+
+.sahad__link {
+  color: var(--text-color);
+}
+
+.section {
+  background-color: var(--section-bg);
+}
+
+/* Skills section */
+.skills__description {
+  color: var(--text-color);
+}
+
+.skills__data {
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.skills__name,
+.skills__percentage {
+  color: var(--text-color);
+}
+.skills__bar {
+  background-color: var(--first-color);
+}
+.skills__icon {
+  color: var(--first-color);
+}
+
+.work__item,
+.experience__item {
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Technical projects section */
+.tech-projects__title {
+  color: var(--text-color);
+}
+
+.tech-projects__title::after {
+  background-color: var(--first-color);
+}
+
+.tech-project {
+  background-color: var(--card-bg);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.tech-project h4,
+.tech-project p {
+  color: var(--text-color);
+} 
+
+/* Work section */
+.work__content {
+  background-color: var(--card-bg);
+}
+
+.work__content h3 {
+  color: var(--first-color);
+}
+
+.work__content p {
+  color: var(--text-color);
+}
+
+.contact__input {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+.footer {
+  background-color: var(--nav-bg);
+}
+/* Adjust work item content background in dark mode */
+[data-theme="dark"] .work__content {
+  background-color: var(--card-bg);
+}
+
+/* Adjust text colors in dark mode */
+[data-theme="dark"] .work__content h3,
+[data-theme="dark"] .tech-project h4 {
+  color: var(--first-color);
+}
+
+[data-theme="dark"] .work__content p,
+[data-theme="dark"] .tech-project p {
+  color: var(--text-color);
+}
+
+/* Adjust button colors in dark mode */
+[data-theme="dark"] .button {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust resume iframe background */
+[data-theme="dark"] .resume-iframe {
+  background-color: var(--bg-color);
+}
+/*Active menu*/
+.active-link::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0.18rem;
+  left: 0;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+/*===== HOME =====*/
+/*===== HOME SECTION =====*/
+.home {
+    position: relative;
+    min-height: 100vh;
+    padding: 5rem 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--body-color);
+}
+
+.home__container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    z-index: 2;
+}
+
+.home__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Background elements */
+.home__bg-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.home__circle, .home__square {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--first-color-rgb), 0.1), rgba(var(--second-color-rgb), 0.1));
+    filter: blur(30px);
+    animation: float 15s infinite linear;
+}
+
+.home__circle--1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.home__circle--2 {
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 3s;
+}
+
+.home__circle--3 {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    right: 20%;
+    animation-delay: 6s;
+}
+
+.home__square {
+    border-radius: 20px;
+}
+
+.home__square--1 {
+    width: 250px;
+    height: 250px;
+    bottom: 5%;
+    left: 10%;
+    animation-delay: 9s;
+}
+
+.home__square--2 {
+    width: 180px;
+    height: 180px;
+    top: 30%;
+    right: 5%;
+    animation-delay: 12s;
+}
+
+/* Text content */
+.home__data {
+    position: relative;
+}
+
+.home__badge {
+    display: inline-block;
+    background: rgba(var(--first-color-rgb), 0.1);
+    color: var(--first-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: var(--font-medium);
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(var(--first-color-rgb), 0.2);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.home__title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: var(--font-bold);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.home__title-line {
+    display: block;
+    color: var(--text-color);
+}
+
+.home__title-highlight {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--first-color), var(--second-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+}
+
+.home__title-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--first-color), var(--second-color));
+    border-radius: 3px;
+}
+
+.home__description {
+    font-size: 1.1rem;
+    color: var(--text-color-light);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    max-width: 90%;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--first-color), var(--second-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: var(--font-semi-bold);
+}
+
+/* Buttons */
+.home__buttons {
+    display: flex;
+    gap: 1rem;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    font-weight: var(--font-semi-bold);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.button--primary {
+    background: linear-gradient(135deg, var(--first-color), var(--second-color));
+    color: white;
+    box-shadow: 0 4px 15px rgba(var(--first-color-rgb), 0.3);
+}
+
+.button--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(var(--first-color-rgb), 0.4);
+}
+
+.button--primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.button--primary:hover::before {
+    left: 100%;
+}
+
+.button--secondary {
+    background-color: transparent;
+    color: var(--first-color);
+    border: 2px solid var(--first-color);
+}
+
+.button--secondary:hover {
+    background-color: rgba(var(--first-color-rgb), 0.05);
+    transform: translateY(-3px);
+}
+
+/* Image section */
+.home__image {
+    position: relative;
+    animation: fadeIn 1s ease-out 0.4s both;
+}
+
+.home__image-container {
+    position: relative;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.home__profile-img {
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease;
+    filter: blur(0.9px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home__image-container:hover .home__profile-img {
+    transform: translateY(-10px);
+    filter: blur(0);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+}
+
+.home__image-frame {
+    position: absolute;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    top: -20px;
+    left: -20px;
+    border: 2px dashed var(--first-color);
+    border-radius: 30px;
+    opacity: 0.5;
+    z-index: 1;
+    animation: rotate 20s linear infinite;
+}
+
+.home__image-dots {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: radial-gradient(var(--first-color) 2px, transparent 2px);
+    background-size: 10px 10px;
+    z-index: 0;
+}
+
+.home__image-dots--1 {
+    top: -30px;
+    right: -30px;
+}
+
+.home__image-dots--2 {
+    bottom: -20px;
+    left: -20px;
+}
+
+/* Social bar - Updated for dark mode */
+.social__bar {
+    display: flex;
+    align-items: center;
+    background: rgba(var(--body-color-rgb), 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin: 2rem auto 0;
+    border: 1px solid rgba(var(--first-color-rgb), 0.1);
+    transition: all 0.3s ease;
+}
+
+.social__bar:hover {
+    background: rgba(var(--body-color-rgb), 0.9);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.social__label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: var(--font-semi-bold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.social__bar:hover .social__label {
+    color: var(--first-color);
+}
+
+.social__icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.social__icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(var(--body-color-rgb), 0.8);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(var(--first-color-rgb), 0.1);
+}
+
+.social__icon:hover {
+    transform: translateY(-5px);
+    color: white;
+}
+
+.social__icon:nth-child(1):hover { background: #25D366; } /* WhatsApp */
+.social__icon:nth-child(2):hover { background: #DB4437; } /* Email */
+.social__icon:nth-child(3):hover { background: #0A66C2; } /* LinkedIn */
+.social__icon:nth-child(4):hover { background: #333; } /* GitHub */
+.social__icon:nth-child(5):hover { background: #1877F2; } /* Facebook */
+.social__icon:nth-child(6):hover { 
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+} /* Instagram */
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 968px) {
+    .home__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .home__description {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .home__buttons {
+        justify-content: center;
+    }
+    
+    .social__bar {
+        margin: 3rem auto 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .home__title {
+        font-size: 2.5rem;
+    }
+    
+    .home__buttons {
+        flex-direction: column;
+    }
+    
+    .button {
+        width: 100%;
+    }
+    
+    .social__bar {
+        flex-direction: column;
+        padding: 1rem;
+        align-items: center;
+    }
+    
+    .social__label {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Dark mode specific styles */
+@media (prefers-color-scheme: dark) {
+    .home__profile-img {
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .home__image-container:hover .home__profile-img {
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .social__bar {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .social__bar:hover {
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    }
+    
+    .social__icon {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+/* ===== ABOUT ===== */
+
+
+.about__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about__container {
+    grid-template-columns: 300px 1fr;
+    text-align: left;
+  }
+}
+
+.about__img {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.about__profile-img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.about__img:hover .about__profile-img {
+  transform: scale(1.03);
+}
+
+.about__img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 1.5rem 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  text-align: center;
+}
+
+.about__img-text {
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.about__content {
+  padding: 0 1rem;
+}
+
+.about__subtitle {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  position: relative;
+  display: inline-block;
+}
+
+.about__subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--first-color);
+}
+
+.about__name {
+  color: var(--first-color);
+  font-weight: 700;
+}
+
+.about__text {
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+.about__text p {
+  margin-bottom: 1.5rem;
+}
+
+.about__skills-list {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.about__skills-list li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  list-style: none;
+  padding-left: 1.8rem;
+}
+
+.about__skills-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+}
+
+.about__skills-list i {
+  color: var(--first-color);
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.about__stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.about__stat {
+  background: rgba(42, 114, 229, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  min-width: 120px;
+}
+
+.about__stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--first-color);
+  line-height: 1;
+}
+
+.about__stat-text {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .about__img-overlay {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+[data-theme="dark"] .about__stat {
+  background: rgba(42, 114, 229, 0.2);
+}
+/* ===== SKILLS ===== */
+.skills__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-title span {
+  color: var(--first-color);
+}
+
+.skills__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.skills__description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.skills__description::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--first-color);
+  margin: 1.5rem auto 0;
+}
+
+.skills__content {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.skills__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.skills__column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skills__category {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--first-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skills__category i {
+  font-size: 1.5rem;
+}
+
+.skills__item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(42, 114, 229, 0.1);
+}
+
+.skills__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.skills__names {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.skills__icon {
+  font-size: 1.8rem;
+  color: var(--first-color);
+}
+
+.skills__name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-color);
+}
+
+.skills__percentage {
+  font-weight: 700;
+  color: var(--first-color);
+  font-size: 1rem;
+}
+
+.skills__bar {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(42, 114, 229, 0.1);
+  overflow: hidden;
+  width: 100%; /* Added this to fix bar container width */
+}
+
+.skills__progress {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--first-color), #4a9bff);
+  width: 0; /* Starts at 0, will be animated to full width */
+  transition: width 1.5s ease-in-out;
+}
+
+/* Add these new skill bar classes */
+.skills__python { width: 75%; }
+.skills__docker { width: 70%; }
+
+/* Dark mode adjustments */
+[data-theme="dark"] .skills__content {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .skills__item {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .skills__item:hover {
+  box-shadow: 0 5px 15px rgba(42, 114, 229, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skills__columns {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills__description {
+    font-size: 1rem;
+  }
+}
+
+/* ===== WORK ===== */
+.work__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.work__description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title span {
+  color: var(--first-color);
+}
+
+.work__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.work__item {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.work__item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(42, 114, 229, 0.2);
+}
+
+.work__img-container {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+}
+
+.work__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.work__item:hover .work__img {
+  transform: scale(1.05);
+}
+
+.work__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 114, 229, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work__item:hover .work__overlay {
+  opacity: 1;
+}
+
+.work__view-btn {
+  color: white;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.work__view-btn:hover {
+  transform: scale(1.2);
+}
+
+.work__content {
+  padding: 1.5rem;
+}
+
+.work__title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
+}
+
+.work__text {
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.work__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.work__tag {
+  background: rgba(42, 114, 229, 0.1);
+  color: var(--first-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.work__links {
+  display: flex;
+  gap: 1rem;
+}
+
+.work__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--first-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.work__link:hover {
+  color: var(--second-color);
+}
+
+.work__link i {
+  font-size: 1.1rem;
+}
+
+/* ===== TECHNICAL PROJECTS ===== */
+.tech-projects {
+  margin-top: 6rem;
+  padding: 0 2rem;
+}
+
+.tech-projects__title {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: 2.2rem;
+  color: var(--text-color);
+  position: relative;
+  font-weight: 700;
+}
+
+.tech-projects__title span {
+  color: var(--first-color);
+  position: relative;
+}
+
+.tech-projects__title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--first-color), transparent);
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+}
+
+.tech-projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tech-project {
+  background: var(--card-bg);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  border: 1px solid rgba(42, 114, 229, 0.15);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.tech-project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(42, 114, 229, 0.03) 0%, transparent 100%);
+  z-index: -1;
+}
+
+.tech-project:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(42, 114, 229, 0.25);
+  border-color: rgba(42, 114, 229, 0.4);
+}
+
+.tech-project__icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(42, 114, 229, 0.08);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--first-color);
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.tech-project:hover .tech-project__icon {
+  transform: rotate(5deg) scale(1.1);
+  background: rgba(42, 114, 229, 0.15);
+}
+
+/* Special icon styles */
+.tech-project__icon.bxl-apple {
+  color: var(--text-color);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .tech-project__icon.bxl-apple {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-project__icon.bx-lock-alt {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.tech-project__title {
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-color);
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.tech-project__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--first-color);
+  transition: width 0.3s ease;
+}
+
+.tech-project:hover .tech-project__title::after {
+  width: 60px;
+}
+
+.tech-project__desc {
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  min-height: 4.5rem;
+}
+
+.tech-project__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.tech-project__tags span {
+  background: rgba(42, 114, 229, 0.1);
+  color: var(--first-color);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tech-project:hover .tech-project__tags span {
+  background: rgba(42, 114, 229, 0.2);
+}
+
+.tech-project__link {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--first-color);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: var(--first-color);
+    color: white;
+    padding: 0.25rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    animation: pulse 2s infinite;
+}
+
+.tech-project__link:hover {
+  color: var(--second-color);
+  transform: translateX(5px);
+}
+
+.tech-project__link i {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.tech-project__link:hover i {
+  transform: translateX(3px);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .tech-project {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .tech-project:hover {
+  box-shadow: 0 20px 45px rgba(42, 114, 229, 0.3);
+}
+
+/* Featured project styling */
+.tech-project.featured {
+  border: 2px solid var(--first-color);
+  box-shadow: 0 15px 40px rgba(42, 114, 229, 0.3);
+}
+
+.tech-project.featured::after {
+  content: 'Featured';
+  position: absolute;
+  top: 20px;
+  right: -30px;
+  background: var(--first-color);
+  color: white;
+  padding: 0.25rem 2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .tech-projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-projects {
+    margin-top: 4rem;
+    padding: 0 1.5rem;
+  }
+  
+  .tech-projects__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .tech-project {
+    padding: 2rem;
+  }
+  
+  .tech-project.featured::after {
+    right: -25px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-projects__title {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+  
+  .tech-project__desc {
+    min-height: auto;
+  }
+}
+/* ===== EXPERIENCE SECTION ===== */
+.experience__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+}
+
+.experience__container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    height: 100%;
+    width: 2px;
+    background: var(--first-color);
+    opacity: 0.3;
+}
+
+.experience__item {
+    position: relative;
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.experience__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.experience__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.experience__icon {
+    width: 50px;
+    height: 50px;
+    background: var(--first-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.experience__info {
+    flex: 1;
+}
+
+.experience__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--first-color);
+    margin-bottom: 0.25rem;
+}
+
+.experience__company {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.experience__date {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--first-color);
+    background: rgba(0, 123, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 500;
+}
+
+.experience__description {
+    padding-left: 0;
+    list-style: none;
+}
+
+.experience__description li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+}
+
+.experience__description li i {
+    color: var(--first-color);
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+    .experience__container {
+        padding: 0 2rem;
+    }
+    
+    .experience__container::before {
+        left: 75px;
+    }
+    
+    .experience__item {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .experience__header {
+        gap: 2rem;
+    }
+    
+    .experience__icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.75rem;
+    }
+    
+    .experience__title {
+        font-size: 1.5rem;
+    }
+    
+    .experience__company {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .experience__container {
+        max-width: 1024px;
+    }
+    
+    .experience__item {
+        padding: 2.5rem;
+    }
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.contact__info-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.contact__form-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.contact__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.contact__icon {
+    font-size: 2.5rem;
+    color: var(--first-color);
+    margin-bottom: 1rem;
+}
+
+.contact__card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--first-color);
+}
+
+.contact__card-data {
+    flex-grow: 1;
+    margin: 0.5rem 0 1rem;
+}
+
+.contact__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--first-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact__button:hover {
+    color: var(--first-color);
+    transform: translateX(5px);
+}
+
+.contact__button-icon {
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    margin-left: 0.3rem;
+}
+
+.contact__form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__form-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact__form-div {
+    position: relative;
+    margin-bottom: 1.5rem;
+    height: 3.5rem;
+}
+
+.contact__form-area {
+  height: 11rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact__form-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    background: none;
+    color: var(--text-color);
+    border: 2px solid var(--first-color);
+    outline: none;
+    border-radius: 0.75rem;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.contact__form-tag {
+    position: absolute;
+    top: -0.75rem;
+    left: 1.25rem;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--bg-color);
+    color: var(--first-color);
+    z-index: 10;
+}
+
+.contact__form-area textarea {
+  resize: none;
+  padding-top: 1.5rem;
+}
+
+.contact__button-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  background-color: var(--first-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.contact__button-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact__button-submit i {
+  margin-left: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+    .contact__container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .contact__info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .contact__container {
+        column-gap: 3rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .contact__info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contact__form-area textarea {
+        min-height: 250px;
+    }
+}
+
+/* ===== RESUME =====*/
+.resume {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.resume__container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.resume-iframe {
+  width: 100%;
+  border: none;
+  min-height: 500px;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-button-container {
+  position: relative;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, #007BFF, #0056D2);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 86, 210, 0.4);
+}
+
+.download-button i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: #2a2e35; /* Distinct dark color */
+  color: #ffffff;
+  padding: 4rem 0 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--first-color), #ff6b6b, var(--first-color));
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.footer__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #ffffff, var(--first-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.footer__title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--first-color);
+}
+
+.footer__subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer__social {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer__icon {
+  font-size: 1.8rem;
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer__icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.footer__icon:hover {
+  color: var(--first-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer__icon:hover::before {
+  left: 100%;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer__links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.footer__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--first-color);
+  transition: width 0.3s ease;
+}
+
+.footer__links a:hover {
+  color: #ffffff;
+}
+
+.footer__links a:hover::after {
+  width: 100%;
+}
+
+.footer__bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.footer__copy {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.footer__credit {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.footer__credit i {
+  color: #ff6b6b;
+  font-size: 1.1rem;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .footer {
+  background-color: #1a1d21;
+}
+
+[data-theme="dark"] .footer::before {
+  background: linear-gradient(90deg, var(--first-color), #9c27b0, var(--first-color));
+}
+
+[data-theme="dark"] .footer__bottom {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .footer__icon {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer__title {
+    font-size: 2rem;
+  }
+  
+  .footer__social {
+    gap: 1rem;
+  }
+  
+  .footer__icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+  
+  .footer__links {
+    gap: 1rem;
+  }
+  
+  .footer__bottom {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Base styles (from previous response, updated) */
+.sahad {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi);
+}
+
+.sahad__list {
+  margin-left: 6rem; /* Added to move the entire list slightly to the right */
+}
+
+@media screen and (max-width: 767px) {
+  .sahad__menu {
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    padding: 2rem;
+    background-color: var(--second-color);
+    transition: 0.5s;
+    z-index: var(--z-fixed);
+    overflow-y: auto;
+  }
+
+  .sahad__menu.show {
+    right: 0;
+  }
+}
+
+.sahad__item {
+  margin-bottom: 1rem; /* Decreased gap for vertical menu */
+}
+
+.sahad__link {
+  position: relative;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  display: block;
+}
+
+.sahad__link:hover {
+  position: relative;
+}
+
+.sahad__link:hover::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0.18rem;
+  left: 0;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+.sahad__logo {
+  color: var(--second-color);
+  font-size: 1.2rem;
+  font-weight: var(--font-semi);
+}
+
+.sahad__toggle {
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/*===== DARK MODE VARIABLES =====*/
+:root {
+  --bg-color: #fff;
+  --text-color: var(--second-color);
+  --nav-bg: #fff;
+  --card-bg: #f9f9f9;
+  --shadow-color: rgba(146, 161, 176, 0.15);
+  --section-bg: #fff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --nav-bg: #1e1e1e;
+  --card-bg: #2d2d2d;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --section-bg: #1e1e1e;
+  --second-color: #e0e0e0;
+  --first-color: hsl(var(--hue-color), 89%, 70%);
+}
+
+/*===== MEDIA QUERIES =====*/
+@media screen and (max-width: 320px) {
+  .home {
+    row-gap: 2rem;
+  }
+  .home__img {
+    width: 200px;
+  }
+  .home__title {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .home {
+    padding: 4rem 0 2rem;
+  }
+  .home__social {
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+    flex-direction: row;
+    align-self: flex-end;
+  }
+  .home__social-icon {
+    margin-bottom: 0;
+    margin-right: var(--mb-4);
+  }
+  .home__img {
+    width: 300px;
+    bottom: 25%;
+  }
+  .about__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    text-align: initial;
+  }
+  .skills__container {
+    grid-template-columns: 0.7fr;
+    justify-content: center;
+    column-gap: 1rem;
+  }
+  .work__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    padding-top: 2rem;
+  }
+  .contact__form {
+    width: 360px;
+    padding-top: 2rem;
+  }
+  .contact__container {
+    justify-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+  .section-title {
+    margin-bottom: var(--mb-6);
+  }
+  .section-title::after {
+    width: 80px;
+    top: 3rem;
+  }
+  .sahad {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .sahad__list {
+    display: flex;
+    padding-top: 0;
+  }
+  .sahad__item {
+    margin-left: 1rem; /* Decreased gap for horizontal menu */
+    margin-bottom: 0;
+  }
+  .sahad__toggle {
+    display: none;
+  }
+  .sahad__link {
+    color: var(--second-color);
+  }
+  .home {
+    padding: 8rem 0 2rem;
+  }
+  .home__img {
+    width: 400px;
+    bottom: 10%;
+  }
+  .about__container {
+    padding-top: 2rem;
+  }
+  .about__img img {
+    width: 300px;
+  }
+  .skills__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    align-items: center;
+    text-align: initial;
+  }
+  .work__container {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+  }
+  .skills__bars {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bd-grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home {
+    padding: 10rem 0 2rem;
+  }
+  .home__img {
+    width: 450px;
+  }
+}
+
+/* Styles for resume1.html */
+.resume-body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9fafb;
+  color: #1f2937;
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+.resume-body::-webkit-scrollbar {
+  display: none;
+}
+
+.resume-body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.resume-container {
+  max-width: 896px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.resume-header {
+  text-align: center;
+  background-image: linear-gradient(to right, #2563eb, #1e40af);
+  color: white;
+  padding: 1.5rem;
+}
+
+.resume-header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.resume-header p {
+  opacity: 0.9;
+}
+
+.resume-section {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.resume-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1d4ed8;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #93c5fd;
+}
+
+/* Styles for thankyou.html */
+.thankyou-body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.thankyou-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #1e1e2f, #2c2c47);
+  color: #fff;
+  padding: 0 20px;
+}
+
+.thankyou-container i {
+  font-size: 100px;
+  color: #4CAF50;
+}
+
+.thankyou-container h1 {
+  margin-top: 20px;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.thankyou-container p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #ccc;
+}
+
+.thankyou-button {
+  margin-top: 30px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.thankyou-button:hover {
+  background-color: #45a049;
+}
+
+/* Login Page Styles */
+.login-container, .register-container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.login-title, .register-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--first-color);
+}
+
+.login-form .form-group, .register-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.login-form label, .register-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.login-form input, .register-form input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--first-color);
+    border-radius: 0.5rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.login-button, .register-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--first-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover, .register-button:hover {
+    background: var(--second-color);
+}
+
+.login-error, .register-error {
+    color: #ff6b6b;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.register-link, .login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-color);
+}
+
+.register-link a, .login-link a {
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.register-link a:hover, .login-link a:hover {
+    text-decoration: underline;
+}
+
+.success-message {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Personal Dashboard Styles */
+.personal-section {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.personal-title {
+    color: var(--first-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.personal-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--first-color);
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: rgba(42, 114, 229, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--first-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+
+about.jpg
+---------
+[Binary content: assets/img/about.jpg]
+
+
+profile.png
+-----------
+[Binary content: assets/img/profile.png]
+
+
+work1.jpg
+---------
+[Binary content: assets/img/work1.jpg]
+
+
+work2.jpg
+---------
+[Binary content: assets/img/work2.jpg]
+
+
+work3.jpg
+---------
+[Binary content: assets/img/work3.jpg]
+
+
+work4.jpg
+---------
+[Binary content: assets/img/work4.jpg]
+
+
+work5.jpg
+---------
+[Binary content: assets/img/work5.jpg]
+
+
+work6.jpg
+---------
+[Binary content: assets/img/work6.jpg]
+
+
+main.js
+-------
+// Contents of assets/js/main.js
+
+/*===== MENU TOGGLE =====*/
+const showMenu = (toggleId, menuId) => {
+    const toggle = document.getElementById(toggleId);
+    const menu = document.getElementById(menuId);
+
+    if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+            toggle.setAttribute('aria-expanded', menu.classList.contains('show'));
+        });
+    }
+};
+showMenu('sahad-toggle', 'sahad-menu');
+
+/*===== CLOSE MOBILE MENU ON LINK CLICK =====*/
+const navLinks = document.querySelectorAll('.sahad__link');
+
+const closeMenu = () => {
+    const menu = document.getElementById('sahad-menu');
+    menu.classList.remove('show');
+    document.getElementById('sahad-toggle').setAttribute('aria-expanded', 'false');
+};
+
+navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+/*===== ACTIVE LINK ON SCROLL =====*/
+const setActiveLink = () => {
+    const scrollPosition = window.scrollY + 100;
+    
+    document.querySelectorAll('section[id]').forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.sahad__menu a[href*="${sectionId}"]`);
+
+        if (navLink) { // Ensure the navLink exists before trying to modify its class
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLink.classList.add('active-link');
+            } else {
+                navLink.classList.remove('active-link');
+            }
+        }
+    });
+};
+
+window.addEventListener('scroll', setActiveLink);
+
+/*===== SCROLL REVEAL ANIMATIONS =====*/
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 1000,
+    delay: 200,
+    reset: false,
+    mobile: false
+});
+
+// Configure animations
+sr.reveal('.home__data, .about__img', { origin: 'left' });
+sr.reveal('.home__img, .about__text', { origin: 'right', delay: 400 });
+sr.reveal('.home__social-icon', { interval: 200, origin: 'bottom' });
+sr.reveal('.skills__data, .work__item, .contact__card', { interval: 150 });
+
+/*===== DARK MODE TOGGLE =====*/
+const themeToggle = document.getElementById('theme-toggle');
+const getCurrentTheme = () => localStorage.getItem('theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'bx bx-sun' : 'bx bx-moon';
+};
+
+// Initialize theme
+setTheme(getCurrentTheme());
+
+// Toggle theme on click
+themeToggle.addEventListener('click', () => {
+    const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
+
+/*===== CONTACT FORM HANDLING =====*/
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<span>Sending...</span><i class="bx bx-loader bx-spin"></i>';
+        
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch('https://formspree.io/f/xdkddnrq', {
+                method: 'POST',
+                body: formData,
+                // Do NOT set Content-Type header when sending FormData,
+                // the browser will set it correctly (multipart/form-data)
+                headers: { 
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                submitButton.innerHTML = '<span>Sent!</span><i class="bx bx-check"></i>';
+                contactForm.reset();
+                // Redirect to thank you page after 1.5 seconds
+                setTimeout(() => {
+                    window.location.href = 'thankyou.html';
+                }, 1500);
+            } else {
+                const errorData = await response.json();
+                console.error('Formspree error response:', errorData); // Log Formspree's error response
+                throw new Error(errorData.error || 'Form submission failed');
+            }
+        } catch (error) {
+            console.error('Error during form submission:', error); // Log the caught error
+            submitButton.innerHTML = '<span>Error! Try Again</span><i class="bx bx-error"></i>';
+            setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }, 3000);
+        }
+    });
+}
+
+/*===== RESUME IFRAME HANDLING =====*/
+const resizeIframe = (iframe) => {
+    try {
+        const resizeObserver = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                // Ensure there's a valid scrollHeight before setting height
+                if (iframe.contentWindow && iframe.contentWindow.document.body.scrollHeight) {
+                    iframe.style.height = `${iframe.contentWindow.document.body.scrollHeight + 20}px`;
+                }
+            }
+        });
+        
+        // Observe the body of the iframe's content
+        if (iframe.contentWindow && iframe.contentWindow.document.body) {
+            resizeObserver.observe(iframe.contentWindow.document.body);
+        } else {
+            console.warn('Iframe contentWindow or document.body not available for ResizeObserver.');
+            iframe.style.height = '1200px'; // Fallback height
+        }
+    } catch (e) {
+        console.warn('Iframe resize error (likely cross-origin):', e);
+        iframe.style.height = '1200px'; // Fallback height
+    }
+};
+
+// Initialize iframe when loaded
+const resumeIframe = document.getElementById('resumeIframe');
+if (resumeIframe) {
+    resumeIframe.addEventListener('load', () => resizeIframe(resumeIframe));
+}
+
+/*===== PDF DOWNLOAD HANDLER =====*/
+const downloadPdf = async (e) => {
+    // Only proceed if the clicked element or its ancestor has the 'download-button' class
+    const downloadBtn = e.target.closest('.download-button');
+    if (!downloadBtn || downloadBtn.id !== 'downloadPdfBtn') return; // Added ID check to be specific
+
+    e.preventDefault(); // Prevent default link behavior for programmatic download
+
+    const originalText = downloadBtn.innerHTML;
+    downloadBtn.disabled = true;
+    downloadBtn.innerHTML = '<i class="bx bx-loader bx-spin"></i> Preparing PDF...';
+    
+    try {
+        // Try direct download first (assuming 'Sahad_Asarikandy_Resume.pdf' is in the root or assets folder)
+        const pdfFileName = 'Sahad_Asarikandy_Resume.pdf'; // Or specify full path if not in root
+        const pdfResponse = await fetch(pdfFileName);
+        
+        if (pdfResponse.ok) {
+            const pdfBlob = await pdfResponse.blob();
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            
+            const a = document.createElement('a');
+            a.href = pdfUrl;
+            a.download = pdfFileName; // Set the download filename
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            setTimeout(() => URL.revokeObjectURL(pdfUrl), 100); // Clean up the URL object
+            
+            downloadBtn.innerHTML = '<i class="bx bx-check"></i> Downloaded!'; // Success message
+        } else {
+            console.warn(`Direct PDF download failed: ${pdfResponse.status} ${pdfResponse.statusText}`);
+            throw new Error('PDF file not found or accessible directly.');
+        }
+    } catch (error) {
+        console.error('Error during PDF download:', error);
+        alert('Failed to download PDF. Please ensure the file exists and is accessible, or try again later.');
+        // Fallback or error state
+        downloadBtn.innerHTML = '<i class="bx bx-error"></i> Download Failed';
+    } finally {
+        setTimeout(() => { // Revert button after a short delay
+            downloadBtn.disabled = false;
+            downloadBtn.innerHTML = originalText;
+        }, 2000);
+    }
+};
+
+// Ensure the download button has an ID for specific targeting if multiple buttons exist
+// Add an ID to your download button in index.html: <a href="Sahad_Asarikandy_Resume.pdf" id="downloadPdfBtn" download="Sahad_Asarikandy_Resume.pdf" class="download-button">
+document.getElementById('downloadPdfBtn')?.addEventListener('click', downloadPdf); // Use optional chaining for safety
+
+/*===== PERFORMANCE OPTIMIZATIONS =====*/
+// Debounce scroll events
+const debounce = (func, wait = 100) => {
+    let timeout;
+    return function() {
+        const context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+};
+// Animate skill bars on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const animateSkillBars = () => {
+    const skillBars = document.querySelectorAll('.skills__progress');
+    
+    skillBars.forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      bar.style.width = width + '%';
+    });
+  };
+
+  // Intersection Observer for scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateSkillBars();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const skillsSection = document.querySelector('.skills');
+  if (skillsSection) {
+    observer.observe(skillsSection);
+  }
+});
+// Update copyright year automatically
+document.addEventListener('DOMContentLoaded', function() {
+    // Set copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Add animation to footer icons on page load
+    const footerIcons = document.querySelectorAll('.footer__icon');
+    footerIcons.forEach((icon, index) => {
+        icon.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1 + 0.5}s`;
+    });
+});
+// Add this to your CSS or in a style tag
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+`;
+document.head.appendChild(style);
+
+window.addEventListener('scroll', debounce(setActiveLink));
+
+// Load non-critical resources after page load
+window.addEventListener('load', () => {
+    // Lazy load iframe if needed - it's already set with src="resume1.html" in HTML,
+    // so this part might be redundant unless you plan to dynamically set src.
+    // If resume1.html content is very large, consider a more robust lazy loading strategy.
+    
+    // Ensure html2pdf is loaded only when needed (e.g., if direct PDF download fails)
+    // The previous implementation attempts direct download first, which is good.
+    // html2pdf is only needed as a fallback or for dynamic PDF generation.
+    // It's generally better to load it only when the user explicitly triggers a complex PDF generation.
+    // For a simple static PDF download, direct anchor link is sufficient and more performant.
+    // Keeping the current structure, but noting that html2pdf might not be strictly necessary
+    // unless 'resume.pdf' is generated on the fly from 'resume1.html'.
+    // If 'Sahad_Asarikandy_Resume.pdf' is a static file, you don't need html2pdf.
+});
+// Add this at the bottom of main.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Check login status
+    checkLoginStatus();
+});
+
+async function checkLoginStatus() {
+    try {
+        const response = await fetch('assets/php/auth.php?check=1');
+        const data = await response.json();
+        
+        const loginNavItem = document.getElementById('loginNavItem');
+        if (loginNavItem) {
+            if (data.loggedIn) {
+                loginNavItem.innerHTML = `
+                    <a href="personal.html" class="sahad__link">Personal</a>
+                    <a href="assets/php/logout.php" class="sahad__link" style="margin-left: 10px;">Logout</a>
+                `;
+            } else {
+                loginNavItem.innerHTML = '<a href="login.html" class="sahad__link">Login</a>';
+            }
+        }
+    } catch (error) {
+        console.error('Error checking login status:', error);
+    }
+}
+
+
+auth.php
+--------
+// Contents of assets/php/auth.php
+
+<?php
+session_start();
+require 'db.php';
+
+function authenticate($username, $password) {
+    global $pdo;
+    
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
+    
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['first_name'] = $user['first_name'];
+        return true;
+    }
+    return false;
+}
+
+function isLoggedIn() {
+    return isset($_SESSION['user_id']);
+}
+
+if (isset($_GET['check'])) {
+    echo json_encode(['loggedIn' => isLoggedIn()]);
+    exit;
+}
+?>
+
+create_user.php
+---------------
+// Contents of assets/php/create_user.php
+
+<?php
+header('Content-Type: application/json');
+require 'db.php';
+
+// Initialize response array
+$response = [
+    'success' => false,
+    'message' => '',
+    'errors' => []
+];
+
+// Only process POST requests
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $response['message'] = 'Invalid request method';
+    echo json_encode($response);
+    exit;
+}
+
+// Get and sanitize input data
+$first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING);
+$last_name = filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+$password = $_POST['password'] ?? '';
+$confirm_password = $_POST['confirm_password'] ?? '';
+
+// Validate inputs
+if (empty($first_name)) {
+    $response['errors']['first_name'] = 'First name is required';
+}
+
+if (empty($last_name)) {
+    $response['errors']['last_name'] = 'Last name is required';
+}
+
+if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $response['errors']['email'] = 'Valid email is required';
+}
+
+if (empty($username)) {
+    $response['errors']['username'] = 'Username is required';
+} elseif (strlen($username) < 4) {
+    $response['errors']['username'] = 'Username must be at least 4 characters';
+}
+
+if (empty($password)) {
+    $response['errors']['password'] = 'Password is required';
+} elseif (strlen($password) < 8) {
+    $response['errors']['password'] = 'Password must be at least 8 characters';
+}
+
+if ($password !== $confirm_password) {
+    $response['errors']['confirm_password'] = 'Passwords do not match';
+}
+
+// If there are validation errors, return them
+if (!empty($response['errors'])) {
+    $response['message'] = 'Please correct the following errors';
+    echo json_encode($response);
+    exit;
+}
+
+try {
+    // Check if username or email already exists
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
+    $stmt->execute([$username, $email]);
+    
+    if ($stmt->rowCount() > 0) {
+        $response['message'] = 'Username or email already exists';
+        echo json_encode($response);
+        exit;
+    }
+    
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    
+    // Insert new user
+    $stmt = $pdo->prepare("INSERT INTO users (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$first_name, $last_name, $email, $username, $hashed_password]);
+    
+    // Success
+    $response['success'] = true;
+    $response['message'] = 'Registration successful!';
+    echo json_encode($response);
+    
+} catch (PDOException $e) {
+    $response['message'] = 'Database error: ' . $e->getMessage();
+    echo json_encode($response);
+}
+?>
+
+
+db.php
+------
+// Contents of assets/php/db.php
+
+<?php
+$host = 'localhost';
+$dbname = 'portfolio_db';
+$username = 'root'; // Change this to your MySQL username
+$password = ''; // Change this to your MySQL password
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+?>
+
+
+
+login.php
+---------
+// Contents of assets/php/login.php
+
+<?php
+require 'auth.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $username = $data['username'] ?? '';
+    $password = $data['password'] ?? '';
+    
+    if (authenticate($username, $password)) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Invalid username or password']);
+    }
+    exit;
+}
+
+header('Location: ../login.html');
+?>
+
+
+logout.php
+----------
+// Contents of assets/php/logout.php
+
+<?php
+session_start();
+session_destroy();
+header('Location: ../index.html');
+exit;
+?>
+
+
+register.php
+------------
+// Contents of assets/php/register.php
+
+<?php
+require 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    $first_name = $data['first_name'] ?? '';
+    $last_name = $data['last_name'] ?? '';
+    $email = $data['email'] ?? '';
+    $username = $data['username'] ?? '';
+    $password = $data['password'] ?? '';
+    $confirm_password = $data['confirm_password'] ?? '';
+    
+    // Validate inputs
+    $errors = [];
+    
+    if (empty($first_name)) $errors[] = 'First name is required';
+    if (empty($last_name)) $errors[] = 'Last name is required';
+    if (empty($email)) $errors[] = 'Email is required';
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Invalid email format';
+    if (empty($username)) $errors[] = 'Username is required';
+    if (empty($password)) $errors[] = 'Password is required';
+    if ($password !== $confirm_password) $errors[] = 'Passwords do not match';
+    
+    if (empty($errors)) {
+        // Check if username or email already exists
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
+        $stmt->execute([$username, $email]);
+        
+        if ($stmt->rowCount() > 0) {
+            echo json_encode(['success' => false, 'message' => 'Username or email already exists']);
+            exit;
+        }
+        
+        // Hash password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        
+        // Insert new user
+        $stmt = $pdo->prepare("INSERT INTO users (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$first_name, $last_name, $email, $username, $hashed_password]);
+        
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => implode('<br>', $errors)]);
+    }
+    exit;
+}
+
+header('Location: ../register.html');
+?>
+
+
+styles.scss
+-----------
+// Contents of assets/scss/styles.scss
+
+/*===== GOOGLE FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/*===== VARIABLES CSS =====*/
+:root{
+    --header-height: 3rem;
+    --font-semi: 600;
+    
+    /*===== Colores =====*/
+    /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
+    /* HSL color mode */
+    --hue-color: 224;
+    --first-color: hsl(var(--hue-color), 89%, 60%);
+    --second-color: hsl(var(--hue-color), 56%, 12%);
+
+    /*===== Fuente y tipografia =====*/
+    --body-font: 'Poppins', sans-serif;
+
+    --big-font-size: 2rem;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: .938rem;
+    --smaller-font-size: .75rem;
+
+    /*===== Margenes =====*/
+    --mb-2: 1rem;
+    --mb-4: 2rem;
+    --mb-5: 2.5rem;
+    --mb-6: 3rem;
+
+    /*===== z index =====*/
+    --z-back: -10;
+    --z-fixed: 100;
+
+    @media screen and (min-width: 968px){
+        --big-font-size: 3.5rem;
+        --h2-font-size: 2rem;
+        --normal-font-size: 1rem;
+        --smaller-font-size: .875rem;
+    }
+}
+
+/*===== BASE =====*/
+*,::before,::after{
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    color: var(--second-color);
+}
+h1,h2,p{
+    margin: 0;  
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*===== CLASS CSS ===== */
+.section-title{
+    position: relative;
+    font-size: var(--h2-font-size);
+    color: var(--first-color);
+    margin-top: var(--mb-2);
+    margin-bottom: var(--mb-4);
+    text-align: center;
+
+    &::after{
+        position: absolute;
+        content: '';
+        width: 64px;
+        height: 0.18rem;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 2rem;
+        background-color: var(--first-color);
+    }
+}
+.section{
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+/*===== LAYOUT =====*/
+.bd-grid{
+    max-width: 1024px;
+    display: grid;
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+}
+.l-header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(146,161,176,.15);
+}
+
+/*===== sahad =====*/
+.sahad{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: var(--font-semi);
+
+    &__menu{
+        @media screen and (max-width: 767px){
+            position: fixed;
+            top: var(--header-height);
+            right: -100%;
+            width: 80%;
+            height: 100%;
+            padding: 2rem;
+            background-color: var(--second-color);
+            transition: .5s;
+        }
+    }
+    &__item{
+        margin-bottom: var(--mb-4);
+    }
+    &__link{
+        position: relative;
+        color: #fff;
+
+        &:hover{
+            position: relative;
+
+            &::after{
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 0.18rem;
+                left: 0;
+                top: 2rem;
+                background-color: var(--first-color);
+            }
+        }
+    }
+    &__logo{
+        color: var(--second-color);
+    }
+    &__toggle{
+        color: var(--second-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+/*Active menu*/
+.active-link::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 0.18rem;
+    left: 0;
+    top: 2rem;
+    background-color: var(--first-color);
+}
+
+/*=== Show menu ===*/
+.show{
+    right: 0;
+}
+
+/*===== HOME =====*/
+.home{
+    position: relative;
+    row-gap: 5rem;
+    padding: 4rem 0 5rem;
+
+    &__data{
+        align-self: center;
+    }
+    &__title{
+        font-size: var(--big-font-size);
+        margin-bottom: var(--mb-5);
+
+        &-color{
+            color: var(--first-color);
+        }
+    }
+    &__social{
+        display: flex;
+        flex-direction: column;
+        &-icon{
+            width: max-content;
+            margin-bottom: var(--mb-2);
+            font-size: 1.5rem;
+            color: var(--second-color);
+
+            &:hover{
+                color: var(--first-color);
+            }
+        }
+    }
+
+    &__img{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 260px;
+    }
+    &__blob{
+        fill: var(--first-color);
+
+        &-img{
+            width: 360px;
+        }
+    }
+}
+
+/*BUTTONS*/
+.button{
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: .75rem 2.5rem;
+    font-weight: var(--font-semi);
+    border-radius: .5rem; 
+    transition: .3s;
+
+    &:hover{
+        box-shadow: 0px 10px 36px rgba(0,0,0,.15);
+    }
+}
+
+/* ===== ABOUT =====*/
+.about{
+    &__container{
+        row-gap: 2rem;
+        text-align: center;
+    }
+    &__subtitle{
+        margin-bottom: var(--mb-2);
+    }
+
+    &__img{
+        justify-self: center;
+        
+        & img{
+            width: 200px;
+            border-radius: .5rem;
+        }
+    }
+}
+
+/* ===== SKILLS =====*/
+.skills{
+    &__container{
+        row-gap: 2rem;
+        text-align: center;
+    }
+    &__subtitle{
+        margin-bottom: var(--mb-2);
+    }
+    &__text{
+        margin-bottom: var(--mb-4);
+    }
+    &__data{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        font-weight: var(--font-semi);
+        padding: .5rem 1rem;
+        margin-bottom: var(--mb-4);
+        border-radius: .5rem;
+        box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+    }
+    &__icon{
+        font-size: 2rem;
+        margin-right: var(--mb-2);
+        color: var(--first-color);
+    }
+    &__names{
+        display: flex;
+        align-items: center;
+    }
+    &__bar{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: var(--first-color);
+        height: .25rem;
+        border-radius: .5rem;
+        z-index: var(--z-back);
+    }
+    &__html{
+        width: 95%;
+    }
+    &__css{
+        width: 85%;
+    }
+    &__js{
+        width: 65%;
+    }
+    &__ux{
+        width: 85%;
+    }
+    &__img{
+        border-radius: .5rem;
+    }
+}
+/* ===== WORK =====*/
+.work{
+    &__container{
+        row-gap: 2rem;
+    }
+    &__img{
+        box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15); 
+        border-radius: .5rem;
+        overflow: hidden;
+        
+        & img{
+            transition: 1s;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+/* ===== CONTACT =====*/
+.contact{
+    &__input{
+        width: 100%;
+        font-size: var(--normal-font-size);
+        font-weight: var(--font-semi);
+        padding: 1rem;
+        border-radius: .5rem;
+        border: 1.5px solid var(--second-color);
+        outline: none;
+        margin-bottom: var(--mb-4);
+    }
+    &__button{
+        display: block;
+        border: none;
+        outline: none;
+        font-size: var(--normal-font-size);
+        cursor: pointer;
+        margin-left: auto;
+    }
+}
+
+/* ===== FOOTER =====*/
+.footer{
+    background-color: var(--second-color);
+    color: #fff;
+    text-align: center;
+    font-weight: var(--font-semi);
+    padding: 2rem 0;
+
+    &__title{
+        font-size: 2rem;
+        margin-bottom: var(--mb-4);
+    }
+    &__social{
+        margin-bottom: var(--mb-4);
+    }
+    &__icon{
+        font-size: 1.5rem;
+        color: #fff;
+        margin: 0 var(--mb-2);
+    }
+    &__copy{
+        font-size: var(--smaller-font-size);
+    }
+}
+
+/* ===== MEDIA QUERIES=====*/
+@media screen and (max-width: 320px){
+    .home{
+        row-gap: 2rem;
+
+        &__img{
+            width: 200px;
+        }
+    }
+}
+
+@media screen and (min-width: 576px){
+    .home{
+        padding: 4rem 0 2rem;
+        &__social{
+            padding-top: 0;
+            padding-bottom: 2.5rem;
+            flex-direction: row;
+            align-self: flex-end;
+
+            &-icon{
+                margin-bottom: 0;
+                margin-right: var(--mb-4);
+            }
+        }
+        &__img{
+            width: 300px;
+            bottom: 25%;
+        }
+    }
+
+    .about__container{
+        grid-template-columns: repeat(2,1fr);
+        align-items: center;
+        text-align: initial;
+    }
+
+    .skills__container{
+        grid-template-columns: .7fr;
+        justify-content: center;
+        column-gap: 1rem;
+    }
+
+    .work__container{
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 2rem;
+        padding-top: 2rem;
+    }
+
+    .contact{
+        &__form{
+            width: 360px;
+            padding-top: 2rem ;
+        }
+        &__container{
+            justify-items: center;
+        }
+    }
+}
+
+@media screen and (min-width: 768px){
+    body{
+        margin: 0;
+    }
+    .section{
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+    }
+
+    .section-title{
+        margin-bottom: var(--mb-6);
+
+        &::after{
+            width: 80px;
+            top: 3rem;
+        }
+    }
+
+    .sahad{
+        height: calc(var(--header-height) + 1.5rem);
+        &__list{
+            display: flex;
+            padding-top: 0;
+        }
+        &__item{
+            margin-left: var(--mb-6);
+            margin-bottom: 0;
+        }
+        &__toggle{
+            display: none;
+        }
+        &__link{
+            color: var(--second-color);
+        }
+    }
+    .home{
+        padding: 8rem 0 2rem;
+        
+        &__img{
+            width: 400px;
+            bottom: 10%;
+        }
+    }
+
+    .about{
+        &__container{
+           padding-top: 2rem;
+        }
+        &__img{
+            & img{
+                width: 300px;
+            }
+        }
+    }
+    .skills__container{
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 2rem;
+        align-items: center;
+        text-align: initial;
+    }
+    .work__container{
+        grid-template-columns: repeat(3,1fr);
+        column-gap: 2rem;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .bd-grid{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .home{
+        padding: 10rem 0 2rem;
+
+        &__img{
+            width: 450px;
+        }
+    }
+}
+
+
+
+index.html
+==========
+// Contents of index.html
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Sahad Asarikandy - Web Designer and Developer Portfolio">
+        
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>SAHAD ASARIKANDY - Web Designer</title>
+    </head>
+    <body>
+        <header class="l-header">
+            <nav class="sahad bd-grid">
+                <div>
+                    <a href="#home" class="sahad__logo">SAHAD ASARIKANDY</a>
+                </div>
+
+                <div class="sahad__menu" id="sahad-menu">
+                    <ul class="sahad__list">
+                        <li class="sahad__item"><a href="#home" class="sahad__link active-link">Home</a></li>
+                        <li class="sahad__item"><a href="#about" class="sahad__link">About</a></li>
+                        <li class="sahad__item"><a href="#skills" class="sahad__link">Skills</a></li>
+                        <li class="sahad__item"><a href="#work" class="sahad__link">Work</a></li>
+                        <li class="sahad__item"><a href="#experience" class="sahad__link">Experience</a></li>
+                        <li class="sahad__item"><a href="#contact" class="sahad__link">Contact</a></li>
+                        <li class="sahad__item"><a href="#resume" class="sahad__link">Resume</a></li>
+                        <li class="sahad__item" id="loginNavItem"><a href="login.html" class="sahad__link">Login</a></li>
+                    </ul>
+                </div>
+<div class="sahad__toggle" id="sahad-toggle">
+    <i class='bx bx-menu'></i>
+</div>
+<div class="theme-toggle" id="theme-toggle">
+    <i class='bx bx-moon'></i>
+</div>
+            </nav>
+        </header>
+            <!--===== HOME =====-->
+        <main class="l-main">
+    <section class="home bd-grid" id="home">
+        <div class="home__container">
+            <!-- Animated background elements -->
+            <div class="home__bg-elements">
+                <div class="home__circle home__circle--1"></div>
+                <div class="home__circle home__circle--2"></div>
+                <div class="home__circle home__circle--3"></div>
+                <div class="home__square home__square--1"></div>
+                <div class="home__square home__square--2"></div>
+            </div>
+            
+            <div class="home__content">
+                <div class="home__data">
+                    <div class="home__badge">
+                        <span>Welcome to my portfolio</span>
+                    </div>
+                    
+                    <h1 class="home__title">
+                        <span class="home__title-line">Hello, I'm</span>
+                        <span class="home__title-highlight">SAHAD</span>
+                        <span class="home__title-line">Web Designer & Developer</span>
+                    </h1>
+                    
+                    <p class="home__description">
+                        I create <span class="text-gradient">digital experiences</span> that are beautiful, functional, and user-focused. 
+                        Combining modern design with clean code to bring ideas to life.
+                    </p>
+                    
+                    <div class="home__buttons">
+                        <a href="#contact" class="button button--primary">
+                            <span>Get In Touch</span>
+                            <i class='bx bx-paper-plane'></i>
+                        </a>
+                        <a href="#work" class="button button--secondary">
+                            <span>View Projects</span>
+                            <i class='bx bx-code-alt'></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home__image">
+                    <div class="home__image-container">
+                        <img src="assets/img/profile.png" alt="Sahad's profile" class="home__profile-img">
+                        <div class="home__image-frame"></div>
+                        <div class="home__image-dots"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="home__social">
+                <div class="social__bar">
+                    <span class="social__label">Follow me</span>
+                    <div class="social__icons">
+                        <a href="https://wa.me/97338206810" class="social__icon" target="_blank" title="WhatsApp">
+                            <i class='bx bxl-whatsapp'></i>
+                        </a>
+                        <a href="mailto:info@sahadasariandy.com" class="social__icon" target="_blank" title="Email">
+                            <i class='bx bx-envelope'></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339/" class="social__icon" target="_blank" title="LinkedIn">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="https://github.com/sahad-error" class="social__icon" target="_blank" title="GitHub">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                        <a href="https://www.facebook.com/sahad.ak.980/" class="social__icon" target="_blank" title="Facebook">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a href="https://instagram.com/sahad_ak___/?hl=en" class="social__icon" target="_blank" title="Instagram">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+                <!--===== ABOUT =====-->
+            <!--===== ABOUT =====-->
+<section class="about section" id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about__container bd-grid">
+        <div class="about__img">
+            <img src="assets/img/about.jpg" alt="Sahad Asarikandy" class="about__profile-img">
+            <div class="about__img-overlay">
+                <span class="about__img-text">Web Developer</span>
+            </div>
+        </div>
+        
+        <div class="about__content">
+            <h2 class="about__subtitle">Hello, I'm <span class="about__name">SAHAD</span></h2>
+            <div class="about__text">
+                <p>I'm a passionate full-stack developer with expertise in creating modern, responsive web applications. My technical skills span across:</p>
+                <ul class="about__skills-list">
+                    <li><i class='bx bxs-check-circle'></i> Frontend: HTML5, CSS3, JavaScript, React</li>
+                    <li><i class='bx bxs-check-circle'></i> Backend: PHP, MySQL, Node.js</li>
+                    <li><i class='bx bxs-check-circle'></i> CMS: WordPress, Shopify</li>
+                    <li><i class='bx bxs-check-circle'></i> DevOps: Git, Docker, AWS</li>
+                </ul>
+                <p>I specialize in building accessible, performant websites with clean code architecture. My approach combines technical excellence with creative problem-solving to deliver exceptional user experiences.</p>
+            </div>
+            
+            <div class="about__stats">
+                <div class="about__stat">
+                    <span class="about__stat-number">10+</span>
+                    <span class="about__stat-text">Projects Completed</span>
+                </div>
+                <div class="about__stat">
+                    <span class="about__stat-number">3+</span>
+                    <span class="about__stat-text">Years Experience</span>
+                </div>
+            </div>
+        </div>                                   
+    </div>
+</section>
+                <!--===== SKILLS =====-->
+<section class="skills section" id="skills">
+  <h2 class="section-title">My <span>Skills</span></h2>
+
+  <div class="skills__container">
+    <div class="skills__header">
+      <p class="skills__description">
+        As a full-stack developer, I combine technical expertise with creative problem-solving to build exceptional digital experiences.
+      </p>
+    </div>
+
+    <div class="skills__content">
+      <div class="skills__columns">
+        <!-- Frontend Column -->
+        <div class="skills__column">
+          <h3 class="skills__category">
+            <i class='bx bx-code-alt'></i> Frontend
+          </h3>
+          
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-html5 skills__icon"></i>
+                <span class="skills__name">HTML5</span>
+              </div>
+              <span class="skills__percentage">95%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__html" data-width="95"></div>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-css3 skills__icon"></i>
+                <span class="skills__name">CSS3</span>
+              </div>
+              <span class="skills__percentage">85%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__css" data-width="85"></div>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-javascript skills__icon"></i>
+                <span class="skills__name">JavaScript</span>
+              </div>
+              <span class="skills__percentage">65%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__js" data-width="65"></div>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-react skills__icon"></i>
+                <span class="skills__name">React.js</span>
+              </div>
+              <span class="skills__percentage">75%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__react" data-width="75"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend Column -->
+        <div class="skills__column">
+          <h3 class="skills__category">
+            <i class='bx bx-server'></i> Backend
+          </h3>
+          
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-php skills__icon"></i>
+                <span class="skills__name">PHP</span>
+              </div>
+              <span class="skills__percentage">70%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__php" data-width="70"></div>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bx-data skills__icon"></i>
+                <span class="skills__name">MySQL</span>
+              </div>
+              <span class="skills__percentage">80%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__mysql" data-width="80"></div>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-nodejs skills__icon"></i>
+                <span class="skills__name">Node.js</span>
+              </div>
+              <span class="skills__percentage">60%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__node" data-width="60"></div>
+            </div>
+          </div>
+
+          <!-- Added new backend skill -->
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-python skills__icon"></i>
+                <span class="skills__name">Python</span>
+              </div>
+              <span class="skills__percentage">75%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__python" data-width="75"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & CMS Column -->
+        <div class="skills__column">
+          <h3 class="skills__category">
+            <i class='bx bx-cog'></i> Tools & CMS
+          </h3>
+          
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-wordpress skills__icon"></i>
+                <span class="skills__name">WordPress</span>
+              </div>
+              <span class="skills__percentage">80%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__wp" data-width="80"></div>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-git skills__icon"></i>
+                <span class="skills__name">Git</span>
+              </div>
+              <span class="skills__percentage">90%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__git" data-width="90"></div>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxs-paint skills__icon"></i>
+                <span class="skills__name">UI/UX</span>
+              </div>
+              <span class="skills__percentage">85%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__ux" data-width="85"></div>
+            </div>
+          </div>
+
+          <!-- Added new Tools & CMS skill -->
+          <div class="skills__item">
+            <div class="skills__info">
+              <div class="skills__names">
+                <i class="bx bxl-docker skills__icon"></i>
+                <span class="skills__name">Docker</span>
+              </div>
+              <span class="skills__percentage">70%</span>
+            </div>
+            <div class="skills__bar">
+              <div class="skills__progress skills__docker" data-width="70"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+                <!--===== WORK =====-->
+<section class="work section" id="work">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    
+    <div class="work__header">
+        <p class="work__description">
+            Here are some of my featured projects showcasing my skills in web development and technical implementations.
+        </p>
+    </div>
+    
+    <div class="work__container">
+        <div class="work__item">
+            <div class="work__img-container">
+                <img src="assets/img/work1.jpg" alt="Profile Picture Finder" class="work__img">
+                <div class="work__overlay">
+                    <a href="#" class="work__view-btn">
+                        <i class='bx bx-link-external'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="work__content">
+                <h3 class="work__title">PfpFinder</h3>
+                <p class="work__text">A curated collection of profile pictures and banners for social media platforms with advanced search filters.</p>
+                <div class="work__tags">
+                    <span class="work__tag">React</span>
+                    <span class="work__tag">Firebase</span>
+                    <span class="work__tag">UI Design</span>
+                </div>
+                <div class="work__links">
+                    <a href="#" class="work__link">
+                        <i class='bx bx-globe'></i> Live Demo
+                    </a>
+                    <a href="#" class="work__link">
+                        <i class='bx bxl-github'></i> Code
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="work__item">
+            <div class="work__img-container">
+                <img src="assets/img/work2.jpg" alt="BikeKart" class="work__img">
+                <div class="work__overlay">
+                    <a href="#" class="work__view-btn">
+                        <i class='bx bx-link-external'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="work__content">
+                <h3 class="work__title">BikeKart</h3>
+                <p class="work__text">E-commerce template for bike stores with product listings, cart functionality, and checkout process.</p>
+                <div class="work__tags">
+                    <span class="work__tag">HTML/CSS</span>
+                    <span class="work__tag">JavaScript</span>
+                    <span class="work__tag">PHP</span>
+                </div>
+                <div class="work__links">
+                    <a href="#" class="work__link">
+                        <i class='bx bx-globe'></i> Live Demo
+                    </a>
+                    <a href="#" class="work__link">
+                        <i class='bx bxl-github'></i> Code
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="work__item">
+            <div class="work__img-container">
+                <img src="assets/img/work3.jpg" alt="SimplCalc" class="work__img">
+                <div class="work__overlay">
+                    <a href="#" class="work__view-btn">
+                        <i class='bx bx-link-external'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="work__content">
+                <h3 class="work__title">SimplCalc</h3>
+                <p class="work__text">Advanced calculator application with scientific functions, history tracking, and responsive design.</p>
+                <div class="work__tags">
+                    <span class="work__tag">JavaScript</span>
+                    <span class="work__tag">CSS3</span>
+                    <span class="work__tag">PWA</span>
+                </div>
+                <div class="work__links">
+                    <a href="#" class="work__link">
+                        <i class='bx bx-globe'></i> Live Demo
+                    </a>
+                    <a href="#" class="work__link">
+                        <i class='bx bxl-github'></i> Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Technical Projects -->
+<div class="tech-projects">
+    <h3 class="tech-projects__title">Technical <span>Implementations</span></h3>
+    
+    <div class="tech-projects__grid">
+        <!-- Row 1 - 3 Projects -->
+        <div class="tech-project">
+            <div class="tech-project__icon">
+                <i class='bx bx-phone-call'></i>
+            </div>
+            <h4 class="tech-project__title">VoIP Server</h4>
+            <p class="tech-project__desc">Enterprise VoIP solution with AWS infrastructure and SIP integration.</p>
+            <div class="tech-project__tags">
+                <span>AWS</span>
+                <span>Asterisk</span>
+                <div class="featured-badge">Featured</div>
+            </div>
+        </div>
+        
+        <div class="tech-project featured-project">
+            <div class="tech-project__icon">
+                <i class='bx bxl-apple'></i>
+            </div>
+            <h4 class="tech-project__title">iCloud Downloader</h4>
+            <p class="tech-project__desc">Automated photo downloader with metadata preservation.</p>
+            <div class="tech-project__tags">
+                <span>Python</span>
+                <span>iCloud API</span>
+            </div>
+            <a href="https://github.com/sahad-error/icloud-photo-downloader.git" target="_blank" class="tech-project__link">
+                <i class='bx bxl-github'></i> View Code
+            </a>
+            <div class="featured-badge">Featured</div>
+        </div>
+        
+        <div class="tech-project">
+            <div class="tech-project__icon">
+                <i class='bx bx-shield-alt-2'></i>
+            </div>
+            <h4 class="tech-project__title">VPN Server</h4>
+            <p class="tech-project__desc">Secure remote access solution with certificate auth.</p>
+            <div class="tech-project__tags">
+                <span>OpenVPN</span>
+                <span>AWS</span>
+            </div>
+        </div>
+        
+        <!-- Row 2 - 3 Projects -->
+        <div class="tech-project">
+            <div class="tech-project__icon">
+                <i class='bx bx-line-chart'></i>
+            </div>
+            <h4 class="tech-project__title">Stock Predictor</h4>
+            <p class="tech-project__desc">LSTM neural network for market trend analysis.</p>
+            <div class="tech-project__tags">
+                <span>Python</span>
+                <span>Keras</span>
+            </div>
+        </div>
+        
+        <div class="tech-project">
+            <div class="tech-project__icon">
+                <i class='bx bx-network-chart'></i>
+            </div>
+            <h4 class="tech-project__title">Network Monitor</h4>
+            <p class="tech-project__desc">Real-time monitoring with custom alerting system.</p>
+            <div class="tech-project__tags">
+                <span>Prometheus</span>
+                <span>Grafana</span>
+                <div class="featured-badge">Featured</div>
+            </div>
+        </div>
+        
+        <div class="tech-project">
+            <div class="tech-project__icon">
+                <i class='bx bx-globe'></i>
+            </div>
+            <h4 class="tech-project__title">Website Uptime Monitor</h4>
+            <p class="tech-project__desc">Website monitoring with notification system.</p>
+            <div class="tech-project__tags">
+                <span>Python</span>
+                <span>Cron</span>
+            </div>
+        </div>
+    </div>
+</div>
+                <!--===== CONTACT =====-->
+           <section class="contact section" id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    
+    <div class="contact__container bd-grid">
+        <div class="contact__info-wrapper">
+            <div class="contact__info">
+                <div class="contact__card">
+                    <i class='bx bx-envelope contact__icon'></i>
+                    <h3 class="contact__card-title">Email</h3>
+                    <span class="contact__card-data">info@sahadasariandy.com</span>
+                    <a href="mailto:info@sahadasariandy.com" class="contact__button">
+                        Write me <i class='bx bx-right-arrow-alt contact__button-icon'></i>
+                    </a>
+                </div>
+                
+                <div class="contact__card">
+                    <i class='bx bxl-whatsapp contact__icon'></i>
+                    <h3 class="contact__card-title">WhatsApp</h3>
+                    <span class="contact__card-data">+973-38206810</span>
+                    <a href="https://wa.me/97338206810" target="_blank" class="contact__button">
+                        Chat now <i class='bx bx-right-arrow-alt contact__button-icon'></i>
+                    </a>
+                </div>
+                
+                <div class="contact__card">
+                    <i class='bx bxl-instagram contact__icon'></i>
+                    <h3 class="contact__card-title">Instagram</h3>
+                    <span class="contact__card-data">@sahad_ak___</span>
+                    <a href="https://www.instagram.com/sahad_ak___/?hl=en" target="_blank" class="contact__button">
+                        Follow me <i class='bx bx-right-arrow-alt contact__button-icon'></i>
+                    </a>
+                </div>
+                
+                <div class="contact__card">
+                    <i class='bx bxl-linkedin contact__icon'></i>
+                    <h3 class="contact__card-title">LinkedIn</h3>
+                    <span class="contact__card-data">Sahad Asarikandy</span>
+                    <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339/" target="_blank" class="contact__button">
+                        Connect <i class='bx bx-right-arrow-alt contact__button-icon'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact__form-wrapper">
+            <form id="contactForm" class="contact__form">
+                <div class="contact__form-group">
+                    <div class="contact__form-div">
+                        <input type="text" name="name" class="contact__form-input" placeholder=" " required>
+                        <label class="contact__form-tag">Name</label>
+                    </div>
+                    
+                    <div class="contact__form-div">
+                        <input type="email" name="email" class="contact__form-input" placeholder=" " required>
+                        <label class="contact__form-tag">Email</label>
+                    </div>
+                </div>
+                
+                <div class="contact__form-div contact__form-area">
+                    <textarea name="message" cols="30" rows="8" class="contact__form-input" placeholder=" " required></textarea>
+                    <label class="contact__form-tag">Message</label>
+                </div>
+                
+                <button type="submit" class="button contact__button-submit">
+                    <span>Send Message</span>
+                    <i class='bx bx-send'></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+            <!--===== RESUME =====-->
+            <section class="resume section" id="resume">
+                <h2 class="section-title">Resume</h2>
+                <div class="resume__container bd-grid">
+                    <div class="resume__content">
+                        <iframe id="resumeIframe" src="resume1.html" class="resume-iframe" onload="resizeIframe(this)"></iframe>
+                    </div>
+                    <div class="pdf-button-container">
+                        <a href="Sahad_Asarikandy_Resume.pdf" download="Sahad_Asarikandy_Resume.pdf" class="download-button">
+                            <i class='bx bx-download'></i> Download Resume (PDF)
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+           <!--===== FOOTER =====-->
+        <footer class="footer">
+    <div class="footer__container">
+        <div class="footer__content">
+            <p class="footer__title">SAHAD ASARIKANDY</p>
+            <p class="footer__subtitle">Web Designer & Developer</p>
+            
+            <div class="footer__social">
+                <a href="https://wa.me/97338206810" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <i class='bx bxl-whatsapp'></i>
+                </a>
+                <a href="https://instagram.com/sahad_ak___/?hl=en" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class='bx bxl-instagram'></i>
+                </a>
+                <a href="https://www.facebook.com/sahad.ak.980/" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class='bx bxl-facebook'></i>
+                </a>
+                <a href="https://www.google.com/maps/search/26.213207,+50.585058?entry=tts&g_ep=EgoyMDI1MDcwOC4wIPu8ASoASAFQAw%3D%3D&skid=88735e51-b1aa-46bb-b304-345e11ab9cc0" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="Location">
+                    <i class='bx bx-map'></i>
+                </a>
+                <a href="mailto:info@sahadasariandy.com" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                    <i class='bx bx-envelope'></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339/" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class='bx bxl-linkedin'></i>
+                </a>
+                <a href="https://github.com/sahad-error" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class='bx bxl-github'></i>
+                </a>    
+                <a href="https://twitter.com/Sahadak6" class="footer__icon" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+            </div>
+            
+            <div class="footer__links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#work">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        
+        <div class="footer__bottom">
+            <p class="footer__copy">© <span id="year"></span> sahadasarikandy. All rights reserved</p>
+            <p class="footer__credit">Made with <i class='bx bxs-heart'></i> by Sahad</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
+
+
+
+login.html
+==========
+// Contents of login.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sahad Asarikandy</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--first-color);
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .login-form input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--first-color);
+            border-radius: 0.5rem;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--first-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .login-button:hover {
+            background: var(--second-color);
+        }
+        
+        .login-error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        .register-link a {
+            color: var(--first-color);
+            text-decoration: none;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .success-message {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="l-header">
+        <nav class="sahad bd-grid">
+            <div>
+                <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
+            </div>
+            <div class="sahad__menu" id="sahad-menu">
+                <ul class="sahad__list">
+                    <li class="sahad__item"><a href="index.html" class="sahad__link">Home</a></li>
+                </ul>
+            </div>
+            <div class="sahad__toggle" id="sahad-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="section">
+            <div class="login-container">
+                <h2 class="login-title">Login to Your Account</h2>
+                
+                <?php if (isset($_GET['registered'])): ?>
+                <div class="success-message">
+                    Registration successful! Please login with your credentials.
+                </div>
+                <?php endif; ?>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="login-button">Login</button>
+                    <div id="loginError" class="login-error"></div>
+                    
+                    <div class="register-link">
+                        Don't have an account? <a href="register.html">Register here</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value
+            };
+            
+            const response = await fetch('assets/php/login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('loginError').textContent = result.message;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+personal.html
+=============
+// Contents of personal.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal - Sahad Asarikandy</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .personal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .personal-section {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        
+        .personal-title {
+            color: var(--first-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .personal-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--first-color);
+        }
+        
+        .personal-content {
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(42, 114, 229, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--first-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="l-header">
+        <nav class="sahad bd-grid">
+            <div>
+                <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
+            </div>
+            <div class="sahad__menu" id="sahad-menu">
+                <ul class="sahad__list">
+                    <li class="sahad__item"><a href="index.html" class="sahad__link">Home</a></li>
+                    <li class="sahad__item"><a href="personal.html" class="sahad__link active-link">Personal</a></li>
+                    <li class="sahad__item"><a href="assets/php/logout.php" class="sahad__link">Logout</a></li>
+                </ul>
+            </div>
+            <div class="sahad__toggle" id="sahad-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="section" id="personal">
+            <div class="personal-container bd-grid">
+                <div class="personal-section">
+                    <h2 class="section-title">Welcome to Your Dashboard</h2>
+                    <div class="personal-content">
+                        <p>Hello, Sahad! This is your personal dashboard where you can manage your portfolio content, view analytics, and update your profile.</p>
+                        
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <span class="stat-number">1,248</span>
+                                <span class="stat-label">Total Views</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">87</span>
+                                <span class="stat-label">Messages</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Profile Completion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="personal-section">
+                    <h3 class="personal-title">Recent Activity</h3>
+                    <div class="personal-content">
+                        <ul>
+                            <li>Updated your skills section - 2 days ago</li>
+                            <li>Received a message from a potential client - 3 days ago</li>
+                            <li>Added a new project to your portfolio - 1 week ago</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="personal-section">
+                    <h3 class="personal-title">Quick Actions</h3>
+                    <div class="personal-content">
+                        <button class="button button--primary" style="margin-right: 1rem;">
+                            <i class='bx bx-edit'></i> Edit Profile
+                        </button>
+                        <button class="button button--secondary" style="margin-right: 1rem;">
+                            <i class='bx bx-image'></i> Update Photos
+                        </button>
+                        <button class="button button--secondary">
+                            <i class='bx bx-cog'></i> Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
+register.html
+=============
+// Contents of register.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sahad Asarikandy</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .register-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        
+        .register-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--first-color);
+        }
+        
+        .register-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .register-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .register-form input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--first-color);
+            border-radius: 0.5rem;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        .register-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--first-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .register-button:hover {
+            background: var(--second-color);
+        }
+        
+        .register-error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        .login-link a {
+            color: var(--first-color);
+            text-decoration: none;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="l-header">
+        <nav class="sahad bd-grid">
+            <div>
+                <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
+            </div>
+            <div class="sahad__menu" id="sahad-menu">
+                <ul class="sahad__list">
+                    <li class="sahad__item"><a href="index.html" class="sahad__link">Home</a></li>
+                    <li class="sahad__item"><a href="login.html" class="sahad__link">Login</a></li>
+                </ul>
+            </div>
+            <div class="sahad__toggle" id="sahad-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="section">
+            <div class="register-container">
+                <h2 class="register-title">Create New Account</h2>
+                <form id="registerForm" class="register-form">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    
+                    <button type="submit" class="register-button">Register</button>
+                    <div id="registerError" class="register-error"></div>
+                    
+                    <div class="login-link">
+                        Already have an account? <a href="login.html">Login here</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                first_name: document.getElementById('first_name').value,
+                last_name: document.getElementById('last_name').value,
+                email: document.getElementById('email').value,
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value,
+                confirm_password: document.getElementById('confirm_password').value
+            };
+            
+            const response = await fetch('assets/php/register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                window.location.href = 'login.html?registered=1';
+            } else {
+                document.getElementById('registerError').innerHTML = result.message;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+resume1.html
+============
+// Contents of resume1.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahad Asarikandy Resume</title>
+  <!-- Tailwind CSS CDN for modern styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- html2pdf.js CDN for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .pdf-button-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    /* Fallback mobile tweaks */
+    @media only screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem !important;
+      }
+      h2 {
+        font-size: 1.3rem !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 leading-relaxed p-4 sm:p-6 md:p-10">
+  <div class="container mx-auto max-w-4xl bg-white shadow-lg rounded-xl overflow-hidden">
+    <!-- Header -->
+    <header class="text-center bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 sm:p-8 rounded-t-xl">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-2 tracking-tight">SAHAD ASARIKANDY</h1>
+      <p class="text-base sm:text-lg opacity-90">IT Support & Systems Administrator</p>
+      <p class="text-sm sm:text-base mt-3 opacity-80 px-4 sm:px-0">
+        +973-38206810 | sahadak2001@yahoo.com | 1701, 2735, 327, Adliya, Manama |
+        <a href="https://www.linkedin.com/in/sahad-asarikandy-713382339" target="_blank" class="text-white underline hover:opacity-90">LinkedIn</a>
+      </p>
+    </header>
+
+    <!-- Summary -->
+    <section class="p-6 sm:p-8 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">SUMMARY</h2>
+      <p class="text-gray-700 text-base">
+        Tech-savvy IT Support and Systems Administrator with hands-on experience in cloud infrastructure management (AWS), end-user support, and network troubleshooting. Proficient in Python, Linux, SQL, and virtualization technologies. Skilled at diagnosing and resolving technical issues, configuring systems, and ensuring smooth business operations. A strong communicator, quick learner, and holder of a valid Bahrain driver’s license. Ready to take on challenging roles in cloud operations, IT support, or network administration.
+      </p>
+    </section>
+
+    <!-- Skills -->
+    <section class="p-6 sm:p-8 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">SKILLS</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-gray-700 list-disc pl-5">
+        <li>Python, PowerShell, and Bash scripting</li>
+        <li>HTML, CSS, and JavaScript</li>
+        <li>Windows and Linux Server administration</li>
+        <li>Microsoft 365 setup and management</li>
+        <li>AWS cloud infrastructure</li>
+        <li>Hyper-V virtualization</li>
+        <li>TCP/IP networking fundamentals</li>
+        <li>Firewall setup and configuration</li>
+        <li>Troubleshooting and resolving hardware and software issues</li>
+        <li>Customer support and technical assistance</li>
+        <li>Time management and task prioritization</li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section class="p-6 sm:p-8 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">EXPERIENCE</h2>
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-gray-900">IT Support & Sales Associate, Al Salam Travels, Bahrain</h3>
+        <p class="text-gray-600 text-sm mb-2">Jul 2023 — Current</p>
+        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+          <li>Delivered Tier 1 technical support for desktops, printers, and network connectivity issues.</li>
+          <li>Installed, configured, and maintained operating systems and essential software across user machines.</li>
+          <li>Installed and maintained CCTV systems for reliable surveillance and remote access.</li>
+          <li>Managed user accounts and group policies in Active Directory.</li>
+          <li>Assisted with backup and recovery operations for critical files.</li>
+          <li>Supported travel software and coordinated vendor updates.</li>
+          <li>Met sales targets through client communication and upselling.</li>
+          <li>Provided IT and software training to team members.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-medium text-gray-900">IT Administrator, Cognitive-Solution, Mangaluru, India</h3>
+        <p class="text-gray-600 text-sm mb-2">Aug 2020 — Apr 2022</p>
+        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+          <li>Maintained on-prem/cloud infrastructure (AWS EC2, S3, IAM).</li>
+          <li>Managed Windows Servers, AD, GPOs, and user provisioning.</li>
+          <li>Resolved hardware/software/email/printer issues.</li>
+          <li>Configured routers/switches/firewalls.</li>
+          <li>Handled server updates and system maintenance.</li>
+          <li>Created VMs using VirtualBox and AWS.</li>
+          <li>Documented IT changes, SOPs, and troubleshooting steps.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="p-6 sm:p-8 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">EDUCATION</h2>
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-gray-900">Bachelor of Computer Application</h3>
+        <p class="text-gray-600 text-sm">Yenepoya University, Mangaluru, India</p>
+        <p class="text-gray-600 text-sm mb-2">2019 — 2022</p>
+        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+          <li>Specialization: Big Data Analytics & Cloud Computing</li>
+          <li>GPA: 3.2/4.0</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-medium text-gray-900">High School Degree, Computer Science</h3>
+        <p class="text-gray-600 text-sm">GHS School, Kerala, India</p>
+        <p class="text-gray-600 text-sm mb-2">2016 — 2019</p>
+        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+          <li>Specialization: Programming Languages</li>
+          <li>GPA: 3.5/4.0</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="p-6 sm:p-8 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">PROJECTS</h2>
+      <ul class="list-disc pl-5 text-gray-700 space-y-1">
+        <li><strong>VoIP Server:</strong> Deployed Asterisk VoIP on AWS using SIP trunks.</li>
+        <li><strong>VPN Server:</strong> Configured OpenVPN on AWS for remote access.</li>
+        <li><strong>Stock Trend Prediction App:</strong> ML model with Keras + Streamlit.</li>
+        <li><strong>Network Monitoring:</strong> Setup with Prometheus + Grafana.</li>
+        <li><strong>Website Uptime Monitor:</strong> Python + cron + email alerts.</li>
+      </ul>
+    </section>
+
+    <!-- Languages -->
+    <section class="p-6 sm:p-8 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">LANGUAGES</h2>
+      <ul class="list-disc pl-5 text-gray-700 space-y-1">
+        <li>English</li>
+        <li>Hindi</li>
+        <li>Malayalam</li>
+        <li>Tamil</li>
+      </ul>
+    </section>
+
+    <!-- Awards -->
+    <section class="p-6 sm:p-8 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">AWARDS</h2>
+      <ul class="list-disc pl-5 text-gray-700 space-y-1">
+        <li>Big Data Analytics & Cloud Computing</li>
+        <li>Cross Platform Mobile App Development</li>
+        <li>Microsoft Technical Associate: JavaScript Programming</li>
+        <li>Handset Repair Engineering</li>
+      </ul>
+    </section>
+
+    <!-- References -->
+    <section class="p-6 sm:p-8 pb-10">
+      <h2 class="text-2xl font-semibold text-blue-700 mb-4 pb-2 border-b-2 border-blue-300">REFERENCES</h2>
+      <p class="text-gray-700">Available upon request</p>
+    </section>
+  </div>
+</body>
+</html>
+
+
+Sahad_Asarikandy_Resume.pdf
+===========================
+[Binary content: Sahad_Asarikandy_Resume.pdf]
+
+it is my resume in PDF format. You can download it from the link provided in the resume section of the main page.
+
+
+thankyou.html
+=============
+// Contents of thankyou.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank You</title>
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .thankyou-container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1e1e2f, #2c2c47);
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    .thankyou-container i {
+      font-size: 100px;
+      color: #4CAF50;
+    }
+
+    .thankyou-container h1 {
+      margin-top: 20px;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .thankyou-container p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    .button {
+      margin-top: 30px;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <section class="thankyou-container">
+    <i class='bx bx-check-circle'></i>
+    <h1>Thank You!</h1>
+    <p>Your message has been sent successfully.</p>
+    <a href="index.html" class="button">Back to Home</a>
+  </section>
+</body>
+</html>
+
+
+
+

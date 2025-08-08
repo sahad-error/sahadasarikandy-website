@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal - Sahad Asarikandy</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .personal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .personal-section {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        
+        .personal-title {
+            color: var(--first-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .personal-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--first-color);
+        }
+        
+        .personal-content {
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(42, 114, 229, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--first-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="l-header">
+        <nav class="sahad bd-grid">
+            <div>
+                <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
+            </div>
+            <div class="sahad__menu" id="sahad-menu">
+                <ul class="sahad__list">
+                    <li class="sahad__item"><a href="index.html" class="sahad__link">Home</a></li>
+                    <li class="sahad__item"><a href="personal.html" class="sahad__link active-link">Personal</a></li>
+                    <li class="sahad__item"><a href="/assets/php/logout.php" class="sahad__link">Logout</a></li>
+                </ul>
+            </div>
+            <div class="sahad__toggle" id="sahad-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="section" id="personal">
+            <div class="personal-container bd-grid">
+                <div class="personal-section">
+                    <h2 class="section-title">Welcome to Your Dashboard</h2>
+                    <div class="personal-content">
+                        <p>Hello, Sahad! This is your personal dashboard where you can manage your portfolio content, view analytics, and update your profile.</p>
+                        
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <span class="stat-number">1,248</span>
+                                <span class="stat-label">Total Views</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">87</span>
+                                <span class="stat-label">Messages</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Profile Completion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="personal-section">
+                    <h3 class="personal-title">Recent Activity</h3>
+                    <div class="personal-content">
+                        <ul>
+                            <li>Updated your skills section - 2 days ago</li>
+                            <li>Received a message from a potential client - 3 days ago</li>
+                            <li>Added a new project to your portfolio - 1 week ago</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="personal-section">
+                    <h3 class="personal-title">Quick Actions</h3>
+                    <div class="personal-content">
+                        <button class="button button--primary" style="margin-right: 1rem;">
+                            <i class='bx bx-edit'></i> Edit Profile
+                        </button>
+                        <button class="button button--secondary" style="margin-right: 1rem;">
+                            <i class='bx bx-image'></i> Update Photos
+                        </button>
+                        <button class="button button--secondary">
+                            <i class='bx bx-cog'></i> Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

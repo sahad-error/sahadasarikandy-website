@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sahad Asarikandy</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <header class="sahad__header">
+        <nav class="sahad__nav container">
+            <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
+            <div class="sahad__menu" id="sahad-menu">
+                <ul class="sahad__list">
+                    <li class="sahad__item"><a href="index.html" class="sahad__link">Home</a></li>
+                </ul>
+            </div>
+            <div class="sahad__toggle" id="sahad-toggle"><i class="bx bx-menu"></i></div>
+        </nav>
+    </header>
+
+    <main class="sahad__main">
+        <section class="login container">
+            <div class="login-card">
+                <h1 class="sahad__title">Login to Your Account</h1>
+                <div id="message-container">
+                    <?php if (isset($_GET['success'])): ?>
+                        <p class="success-message">Registration successful! Please login with your credentials.</p>
+                    <?php elseif (isset($_GET['error'])): ?>
+                        <p class="login-error"><?php echo htmlspecialchars($_GET['error']); ?></p>
+                    <?php endif; ?>
+                </div>
+                <form action="/assets/php/login.php" method="POST" id="loginForm" class="login-form">
+                    <div class="sahad__input-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="sahad__input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="login-button">Login</button>
+                    <p class="register-link">
+                        Don't have an account? <a href="register.html">Register here</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

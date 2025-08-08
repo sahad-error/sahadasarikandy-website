@@ -2478,3 +2478,178 @@ body {
 .thankyou-button:hover {
   background-color: #45a049;
 }
+
+/* Existing styles.css content (not repeated here to avoid duplication) */
+
+/* Additional styles for login and register pages */
+.login, .register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height));
+    background: linear-gradient(135deg, hsl(var(--hue-color), 89%, 60%, 0.1), hsl(var(--hue-color), 56%, 12%, 0.1));
+}
+
+.login-card, .register-card {
+    background: var(--card-bg, #fff);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px var(--shadow-color, rgba(0, 0, 0, 0.1));
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-form, .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sahad__input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.sahad__input-group label {
+    display: block;
+    font-size: var(--normal-font-size);
+    color: var(--text-color, #333);
+    margin-bottom: 0.5rem;
+}
+
+.sahad__input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--text-color-light, #ccc);
+    border-radius: 0.5rem;
+    font-size: var(--normal-font-size);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.sahad__input-group input:focus {
+    outline: none;
+    border-color: var(--first-color);
+    box-shadow: 0 0 0 3px hsl(var(--hue-color), 89%, 60%, 0.2);
+}
+
+.login-button, .register-button {
+    padding: 1rem;
+    background: var(--first-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-semi);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.login-button:hover, .register-button:hover {
+    background: var(--second-color);
+    transform: translateY(-2px);
+}
+
+.login-error, .register-error, .success-message {
+    font-size: var(--smaller-font-size);
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.login-error, .register-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.success-message {
+    color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.register-link, .login-link {
+    text-align: center;
+    font-size: var(--smaller-font-size);
+    color: var(--text-color);
+}
+
+.register-link a, .login-link a {
+    color: var(--first-color);
+    font-weight: var(--font-semi);
+    transition: color 0.3s;
+}
+
+.register-link a:hover, .login-link a:hover {
+    color: var(--second-color);
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .login-card, .register-card {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    .sahad__title {
+        font-size: var(--h2-font-size);
+    }
+}
+/* Personal Dashboard Styles */
+.personal-section {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.personal-title {
+    color: var(--first-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.personal-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--first-color);
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: rgba(42, 114, 229, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--first-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-color);
+}

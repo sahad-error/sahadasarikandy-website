@@ -297,3 +297,34 @@ window.addEventListener('load', () => {
     // unless 'resume.pdf' is generated on the fly from 'resume1.html'.
     // If 'Sahad_Asarikandy_Resume.pdf' is a static file, you don't need html2pdf.
 });
+// Add this at the bottom of main.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Check login status
+    checkLoginStatus();
+});
+
+async function checkLoginStatus() {
+    try {
+        const response = await fetch('/assets/php/auth.php?check=1');
+        const data = await response.json();
+        
+        const loginNavItem = document.getElementById('loginNavItem');
+        if (loginNavItem) {
+            if (data.loggedIn) {
+                loginNavItem.innerHTML = `
+                    <a href="personal.html" class="sahad__link">Personal</a>
+                    <a href="/assets/php/logout.php" class="sahad__link" style="margin-left: 10px;">Logout</a>
+                `;
+            } else {
+                loginNavItem.innerHTML = '<a href="login.html" class="sahad__link">Login</a>';
+            }
+        }
+    } catch (error) {
+        console.error('Error checking login status:', error);
+    }
+}
+
+// Add this to your main.js file
+document.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus();
+});
