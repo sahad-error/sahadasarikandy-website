@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Sahad Asarikandy</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Minimal CSS for Remove button and message, matching original Refresh button */
+        .remove-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 5px;
+            background-color: #FFA500;
+            color: #fff;
+        }
+        .remove-btn:hover {
+            background-color: #FF8C00;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+            text-align: center;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center mt-5">
+        <h1>Admin Panel</h1>
+        <p>Website Administration</p>
+    </div>
+
+    <div class="container admin-container">
+        <div class="message" id="message"></div>
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#users">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#analytics">Analytics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#messages">Messages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#activity">Activity</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#settings">Settings</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="dashboard">
+                <h2>Dashboard Overview</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="bx bx-user bx-lg"></i>
+                                <h5>Total Users</h5>
+                                <p id="total-users">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="bx bx-check-circle bx-lg"></i>
+                                <h5>Approved Users</h5>
+                                <p id="approved-users">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="bx bx-time-five bx-lg"></i>
+                                <h5>Pending Approval</h5>
+                                <p id="pending-users">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="bx bx-message bx-lg"></i>
+                                <h5>Total Messages</h5>
+                                <p id="total-messages">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Website Analytics</h2>
+                <div id="analytics-chart">Analytics loading...</div>
+
+                <h2 class="mt-5">Pending Approvals</h2>
+                <button class="action-btn refresh-btn mb-3" onclick="loadPendingApprovals()">Refresh</button>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Registered</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pending-approvals">
+                        <tr><td colspan="4">Loading pending approvals...</td></tr>
+                    </tbody>
+                </table>
+
+                <h2 class="mt-5">Recent Messages</h2>
+                <button class="action-btn refresh-btn mb-3" onclick="loadRecentMessages()">Refresh</button>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-messages">
+                        <tr><td colspan="5">Loading recent messages...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="users">
+                <h2>User Management</h2>
+                <button class="action-btn refresh-btn mb-3" onclick="loadUsers()">Refresh</button>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Registered</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list">
+                        <tr><td colspan="5">Loading users...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="messages">
+                <h2>Contact Messages</h2>
+                <button class="action-btn refresh-btn mb-3" onclick="loadMessages()">Refresh</button>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="message-list">
+                        <tr><td colspan="5">Loading messages...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="activity">
+                <h2>User Activity</h2>
+                <button class="action-btn refresh-btn mb-3" onclick="loadActivity()">Refresh</button>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Action</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activity-list">
+                        <tr><td colspan="3">Loading activity...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="settings">
+                <h2>Settings</h2>
+                <div class="mb-3">
+                    <label>Site Title</label>
+                    <input type="text" class="form-control" id="site-title">
+                </div>
+                <div class="mb-3">
+                    <label>Admin Email</label>
+                    <input type="email" class="form-control" id="admin-email">
+                </div>
+                <div class="mb-3">
+                    <label>Site Description</label>
+                    <textarea class="form-control" id="site-description"></textarea>
+                </div>
+                <button class="action-btn refresh-btn">Save Settings</button>
+            </div>
+        </div>
+
+        <button class="action-btn refresh-btn mt-4" onclick="window.location.href='assets/php/logout.php'">Logout</button>
+    </div>
+
+    <div class="modal fade" id="messageModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Message Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="message-details"></div>
+                <div class="modal-footer">
+                    <button class="action-btn refresh-btn" onclick="replyMessage()">Reply Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editUserModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="edit-user-form"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show message
+        function showMessage(message, type) {
+            const messageDiv = $('#message');
+            messageDiv.text(message).removeClass('success error').addClass(type).show();
+            setTimeout(() => messageDiv.hide(), 3000);
+        }
+
+        // Load users (adjust endpoint as needed)
+        function loadUsers() {
+            $.get('assets/php/get_users.php', function(data) {
+                const tbody = $('#user-list');
+                tbody.empty();
+                if (data.length === 0) {
+                    tbody.append('<tr><td colspan="5">No users found</td></tr>');
+                    return;
+                }
+                data.forEach(user => {
+                    const status = user.approved ? 'Approved' : 'Pending';
+                    const approveButton = user.approved ? '' : `<button class="action-btn refresh-btn" onclick="approveUser(${user.id})">Approve</button>`;
+                    tbody.append(`
+                        <tr>
+                            <td>${user.first_name} ${user.last_name}</td>
+                            <td>${user.email}</td>
+                            <td>${user.created_at}</td>
+                            <td>${status}</td>
+                            <td>
+                                ${approveButton}
+                                <button class="action-btn remove-btn" onclick="removeUser(${user.id}, '${user.email}')">Remove</button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            }).fail(function(xhr) {
+                showMessage('Error loading users: ' + xhr.responseJSON?.message || 'Unknown error', 'error');
+            });
+        }
+
+        // Approve user (placeholder, implement based on your approve_user.php)
+        function approveUser(userId) {
+            $.post('assets/php/approve_user.php', { user_id: userId }, function(response) {
+                showMessage(response.message, response.success ? 'success' : 'error');
+                if (response.success) {
+                    loadUsers();
+                }
+            }, 'json').fail(function(xhr) {
+                showMessage('Error approving user: ' + xhr.responseJSON?.message || 'Unknown error', 'error');
+            });
+        }
+
+        // Remove user
+        function removeUser(userId, email) {
+            if (confirm(`Are you sure you want to remove the user with email ${email}? This action cannot be undone.`)) {
+                $.ajax({
+                    url: 'assets/php/delete-user.php',
+                    type: 'DELETE',
+                    data: JSON.stringify({ user_id: userId }),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        showMessage(response.message, response.success ? 'success' : 'error');
+                        if (response.success) {
+                            loadUsers();
+                        }
+                    },
+                    error: function(xhr) {
+                        showMessage('Error removing user: ' + xhr.responseJSON?.message || 'Unknown error', 'error');
+                    }
+                });
+            }
+        }
+
+        // Placeholder functions (implement based on your endpoints)
+        function loadPendingApprovals() {
+            // Implement based on get_pending_users.php
+        }
+        function loadRecentMessages() {
+            // Implement based on get_messages.php
+        }
+        function loadMessages() {
+            // Implement based on get_messages.php
+        }
+        function loadActivity() {
+            // Implement based on get_activity.php
+        }
+        function replyMessage() {
+            // Implement based on your reply message logic
+        }
+
+        // Load users on page load
+        $(document).ready(function() {
+            loadUsers();
+        });
+    </script>
+</body>
+</html>

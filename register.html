@@ -3,61 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Sahad Asarikandy</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <title>Sign in or Register - Sahad Asarikandy</title>
+    <meta name="csrf-token" content="">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Same styles as login.html above */
+        .login-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--first-color);
+        }
+        
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .social-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .google-btn {
+            background: #4285F4;
+        }
+        
+        .google-btn:hover {
+            background: #357ae8;
+        }
+        
+        .apple-btn {
+            background: #000;
+        }
+        
+        .apple-btn:hover {
+            background: #333;
+        }
+        
+        .facebook-btn {
+            background: #1877F2;
+        }
+        
+        .facebook-btn:hover {
+            background: #166fe5;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        .login-link a {
+            color: var(--first-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <header class="sahad__header">
-        <nav class="sahad__nav container">
-            <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
-            <div class="sahad__menu" id="sahad-menu">
+    <header class="l-header">
+        <nav class="sahad bd-grid">
+            <div>
+                <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
+            </div>
+            <div class="sahad__menu" id="nav-menu">
                 <ul class="sahad__list">
-                    <li class="sahad__item"><a href="index.html" class="sahad__link">Home</a></li>
+                    <li class="sahad__item"><a href="index.html#home" class="sahad__link">Home</a></li>
+                    <li class="sahad__item"><a href="index.html#about" class="sahad__link">About</a></li>
+                    <li class="sahad__item"><a href="index.html#skills" class="sahad__link">Skills</a></li>
+                    <li class="sahad__item"><a href="index.html#work" class="sahad__link">Work</a></li>
+                    <li class="sahad__item"><a href="index.html#contact" class="sahad__link">Contact</a></li>
                 </ul>
             </div>
-            <div class="sahad__toggle" id="sahad-toggle"><i class="bx bx-menu"></i></div>
+            <div class="sahad__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
         </nav>
     </header>
 
-    <main class="sahad__main">
-        <section class="register container">
-            <div class="register-card">
-                <h1 class="sahad__title">Create an Account</h1>
-                <div id="error-message" class="register-error" style="display: none;"></div>
-                <form action="/assets/php/create_user.php" method="POST" id="registerForm" class="register-form">
-                    <div class="sahad__input-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" name="first_name" id="first_name" placeholder="Enter your first name" required>
-                    </div>
-                    <div class="sahad__input-group">
-                        <label for="last_name">Last Name</label>
-                        <input type="text" name="last_name" id="last_name" placeholder="Enter your last name" required>
-                    </div>
-                    <div class="sahad__input-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="sahad__input-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Choose a username" required>
-                    </div>
-                    <div class="sahad__input-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Enter your password" required>
-                    </div>
-                    <div class="sahad__input-group">
-                        <label for="confirm_password">Confirm Password</label>
-                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password" required>
-                    </div>
-                    <button type="submit" class="register-button">Register</button>
-                    <p class="login-link">
-                        Already have an account? <a href="login.html">Login here</a>
-                    </p>
-                </form>
+    <main class="l-main">
+        <div class="login-container">
+            <h2 class="login-title">Sign in or Register</h2>
+            
+<div class="social-login">
+    <button class="social-btn google-btn" onclick="window.location.href='assets/php/google-auth-user.php'">
+        <i class='bx bxl-google'></i> Continue with Google
+    </button>
+    
+    <button class="social-btn facebook-btn" onclick="loginWithFacebook()">
+        <i class='bx bxl-facebook'></i> Continue with Facebook
+    </button>
+    
+    <button class="social-btn apple-btn" onclick="loginWithApple()">
+        <i class='bx bxl-apple'></i> Continue with Apple
+    </button>
+</div>            
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
             </div>
-        </section>
+        </div>
     </main>
 
-    <script src="/assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
+   <script>
+    function loginWithFacebook() {
+        window.location.href = 'assets/php/facebook-auth.php';
+    }
+    
+    function loginWithApple() {
+        window.location.href = 'assets/php/apple-auth.php';
+    }
+</script>
 </body>
 </html>

@@ -75,13 +75,13 @@
     <header class="l-header">
         <nav class="sahad bd-grid">
             <div>
-                <a href="index.html" class="sahad__logo">SAHAD ASARIKANDY</a>
+                <a href="/" class="sahad__logo">SAHAD ASARIKANDY</a>
             </div>
             <div class="sahad__menu" id="sahad-menu">
                 <ul class="sahad__list">
-                    <li class="sahad__item"><a href="index.html" class="sahad__link">Home</a></li>
-                    <li class="sahad__item"><a href="personal.html" class="sahad__link active-link">Personal</a></li>
-                    <li class="sahad__item"><a href="/assets/php/logout.php" class="sahad__link">Logout</a></li>
+                    <li class="sahad__item"><a href="/" class="sahad__link">Home</a></li>
+                    <li class="sahad__item"><a href="/personal" class="sahad__link active-link">Personal</a></li>
+                    <li class="sahad__item"><a href="/logout" class="sahad__link">Logout</a></li>
                 </ul>
             </div>
             <div class="sahad__toggle" id="sahad-toggle">
@@ -149,5 +149,163 @@
     </main>
 
     <script src="assets/js/main.js"></script>
+
+<script>
+// Function to show notification
+function showNotification(message, isSuccess = true) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${isSuccess ? 'success' : 'error'}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-message">${message}</span>
+            <button class="notification-close" onclick="closeNotification(this)">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Auto remove after 10 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.classList.add('fade-out');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }
+    }, 10000);
+}
+
+// Function to close notification
+function closeNotification(button) {
+    const notification = button.closest('.notification');
+    notification.classList.add('fade-out');
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 300);
+}
+
+// Check for URL parameters to show messages
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    const error = urlParams.get('error');
+    
+    if (success) {
+        showNotification(success, true);
+    }
+    
+    if (error) {
+        showNotification(error, false);
+    }
+    
+    // Check if user just logged in
+    const justLoggedIn = sessionStorage.getItem('justLoggedIn');
+    if (justLoggedIn) {
+        showNotification('Login successful!', true);
+        sessionStorage.removeItem('justLoggedIn');
+    }
+});
+
+// Add CSS for notifications
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10000;
+        background: #4CAF50;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        max-width: 350px;
+        animation: slideIn 0.3s ease forwards;
+        display: flex;
+        align-items: center;
+    }
+    
+    .notification.error {
+        background: #f44336;
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .notification-message {
+        flex: 1;
+        margin-right: 15px;
+        font-weight: 500;
+    }
+    
+    .notification-close {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        transition: background 0.2s;
+    }
+    
+    .notification-close:hover {
+        background: rgba(255,255,255,0.2);
+    }
+    
+    .fade-out {
+        animation: slideOut 0.3s ease forwards;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .notification {
+            max-width: calc(100% - 40px);
+            left: 20px;
+            right: 20px;
+        }
+    }
+`;
+document.head.appendChild(notificationStyles);
+</script>
+
 </body>
 </html>
