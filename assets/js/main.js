@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*===== MENU TOGGLE =====*/
 const showMenu = (toggleId, menuId) => {
     const toggle = document.getElementById(toggleId);
@@ -328,3 +329,154 @@ async function checkLoginStatus() {
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();
 });
+=======
+/*===== MENU TOGGLE =====*/
+const showMenu = (toggleId, menuId) => {
+    const toggle = document.getElementById(toggleId);
+    const menu = document.getElementById(menuId);
+
+    if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+            toggle.setAttribute('aria-expanded', menu.classList.contains('show'));
+        });
+    }
+};
+showMenu('sahad-toggle', 'sahad-menu');
+
+/*===== CLOSE MOBILE MENU ON LINK CLICK =====*/
+const navLinks = document.querySelectorAll('.sahad__link');
+
+const closeMenu = () => {
+    const menu = document.getElementById('sahad-menu');
+    menu.classList.remove('show');
+    document.getElementById('sahad-toggle').setAttribute('aria-expanded', 'false');
+};
+
+navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+/*===== ACTIVE LINK ON SCROLL =====*/
+const setActiveLink = () => {
+    const scrollPosition = window.scrollY + 100;
+    
+    document.querySelectorAll('section[id]').forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.sahad__menu a[href*="${sectionId}"]`);
+
+        if (navLink) {
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLink.classList.add('active-link');
+            } else {
+                navLink.classList.remove('active-link');
+            }
+        }
+    });
+};
+
+window.addEventListener('scroll', setActiveLink);
+
+/*===== SCROLL REVEAL ANIMATIONS =====*/
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 1000,
+    delay: 200,
+    reset: false,
+    mobile: false
+});
+
+// Configure animations
+sr.reveal('.home__data, .about__img', { origin: 'left' });
+sr.reveal('.home__img, .about__text', { origin: 'right', delay: 400 });
+sr.reveal('.home__social-icon', { interval: 200, origin: 'bottom' });
+sr.reveal('.skills__data, .work__item, .contact__card', { interval: 150 });
+
+/*===== DARK MODE TOGGLE =====*/
+const themeToggle = document.getElementById('theme-toggle');
+const getCurrentTheme = () => localStorage.getItem('theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'bx bx-sun' : 'bx bx-moon';
+};
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = getCurrentTheme();
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // Set theme on page load
+    setTheme(getCurrentTheme());
+}
+
+/*===== DEBOUNCE FUNCTION FOR SCROLL =====*/
+function debounce(func, wait = 20) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+window.addEventListener('scroll', debounce(setActiveLink));
+
+/*===== FOOTER ANIMATION =====*/
+const footerIcons = document.querySelectorAll('.footer__icon');
+footerIcons.forEach((icon, index) => {
+    icon.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1 + 0.5}s`;
+});
+
+// Add CSS animation
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+`;
+document.head.appendChild(style);
+
+/*===== LOGIN STATUS CHECK =====*/
+document.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus();
+});
+
+async function checkLoginStatus() {
+    try {
+        const response = await fetch('/assets/php/auth.php?check=1');
+        const data = await response.json();
+        
+        const loginNavItem = document.getElementById('loginNavItem');
+        if (loginNavItem) {
+            if (data.loggedIn) {
+                loginNavItem.innerHTML = `
+                    <a href="personal.html" class="sahad__link">Personal</a>
+                    <a href="/assets/php/logout.php" class="sahad__link" style="margin-left: 10px;">Logout</a>
+                `;
+            } else {
+                loginNavItem.innerHTML = `
+                    <a href="login.html" class="sahad__link">Login</a>
+                    <a href="register.html" class="sahad__link" style="margin-left: 10px;">Register</a>
+                `;
+            }
+        }
+    } catch (error) {
+        console.error('Error checking login status:', error);
+    }
+}
+>>>>>>> 4f5f569 (First commit - sahadasarikandy website)
